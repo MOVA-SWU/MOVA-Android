@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_mission_donation"
+        android:icon="@drawable/selector_navigation_mission_donation"
+        android:title="@string/label_mission_donation" />
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/selector_navigation_home"
+        android:title="@string/label_home" />
+    <item
+        android:id="@+id/navigation_mypage"
+        android:icon="@drawable/selector_navigation_mypage"
+        android:title="@string/label_mypage" />
+</menu>

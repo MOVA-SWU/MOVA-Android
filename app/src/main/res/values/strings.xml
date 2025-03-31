@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Mova</string>
+    <string name="label_mission_donation">미션/후원</string>
+    <string name="label_home">홈</string>
+    <string name="label_mypage">마이페이지</string>
+    <string name="description_splash">스플래쉬 이미지</string>
 </resources>
