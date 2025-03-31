@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_graph"
+    app:startDestination="@id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_mission_donation"
+        android:name="com.example.mova.MissionDonationFragment"
+        android:label="@string/label_mission_donation"
+        tools:layout="@layout/fragment_mission_donation" />
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.mova.HomeFragment"
+        android:label="@string/label_home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/navigation_mypage"
+        android:name="com.example.mova.MypageFragment"
+        android:label="@string/label_mypage"
+        tools:layout="@layout/fragment_mypage" />
+
+</navigation>
