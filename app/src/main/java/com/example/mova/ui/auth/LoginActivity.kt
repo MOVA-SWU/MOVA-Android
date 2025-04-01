@@ -1,46 +1,40 @@
-package com.example.mova
+package com.example.mova.ui.auth
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.animation.AnimationUtils
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.mova.databinding.ActivitySplashBinding
-import com.example.mova.ui.auth.LoginActivity
+import com.example.mova.MainActivity
+import com.example.mova.R
+import com.example.mova.databinding.ActivityLoginBinding
 
-@SuppressLint("CustomSplashScreen")
-class SplashActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivitySplashBinding
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivitySplashBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setFadeInAnimation()
         setSystemBar()
         setLayout()
     }
 
-    private fun setFadeInAnimation() {
-        val fadeIn = AnimationUtils.loadAnimation(this, R.anim.splash_animation)
-        binding.root.startAnimation(fadeIn)
-    }
-
-
     private fun setLayout() {
-        Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, LoginActivity::class.java)
+        binding.tvSignIn.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(binding.main.id, SignInFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+        binding.btnLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
-        }, 1000)
+        }
     }
 
     private fun setSystemBar() {
