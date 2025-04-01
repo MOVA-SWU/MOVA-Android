@@ -4,4 +4,11 @@
     <string name="label_home">홈</string>
     <string name="label_mypage">마이페이지</string>
     <string name="description_splash">스플래쉬 이미지</string>
+    <string name="description_start">시작 페이지 이미지</string>
+    <string name="description_btn_start">시작하기 버튼</string>
+    <string name="label_login_logo">MOVA</string>
+    <string name="description_btn_login_back">로그인 뒤로가기 버튼</string>
+    <string name="hint_login_id">아이디</string>
+    <string name="hint_login_password">비밀번호</string>
+    <string name="description_btn_login">로그인 버튼</string>
 </resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white_90"
+    tools:context=".ui.auth.LoginActivity">
+
+    <TextView
+        android:id="@+id/tv_login_logo"
+        style="@style/InterSemiBold.Primary.S40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="180dp"
+        android:text="@string/label_login_logo"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_login_id"
+        style="@style/InterMedium.Black.S16"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="117dp"
+        android:autofillHints="text"
+        android:background="@drawable/background_white_40_stroke"
+        android:hint="@string/hint_login_id"
+        android:inputType="text"
+        android:paddingHorizontal="22dp"
+        android:paddingVertical="15dp"
+        android:textColorHint="@color/gray_80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_logo" />
+
+    <EditText
+        android:id="@+id/et_login_password"
+        style="@style/InterMedium.Black.S16"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="13dp"
+        android:autofillHints="text"
+        android:background="@drawable/background_white_40_stroke"
+        android:hint="@string/hint_login_password"
+        android:inputType="textPassword"
+        android:paddingHorizontal="22dp"
+        android:paddingVertical="15dp"
+        android:textColorHint="@color/gray_80"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_login_id" />
+
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/InterMedium.White.S18"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="56dp"
+        android:background="@drawable/background_primary_40"
+        android:text="로그인"
+        app:backgroundTint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_login_password" />
+
+    <TextView
+        android:id="@+id/tv_find_id"
+        style="@style/InterMedium.Gray400.S11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="19dp"
+        android:text="아이디 찾기"
+        app:layout_constraintEnd_toStartOf="@id/tv_resetting_password"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/btn_login"
+        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+    <TextView
+        android:id="@+id/tv_resetting_password"
+        style="@style/InterMedium.Gray400.S11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="19dp"
+        android:text="비밀번호 재설정"
+        app:layout_constraintEnd_toStartOf="@id/tv_sign_in"
+        app:layout_constraintStart_toEndOf="@id/tv_find_id"
+        app:layout_constraintTop_toTopOf="@id/tv_find_id" />
+
+    <TextView
+        android:id="@+id/tv_sign_in"
+        style="@style/InterMedium.Gray400.S11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:text="회원가입"
+        app:layout_constraintEnd_toEndOf="@id/btn_login"
+        app:layout_constraintStart_toEndOf="@id/tv_resetting_password"
+        app:layout_constraintTop_toTopOf="@id/tv_find_id" />
+</androidx.constraintlayout.widget.ConstraintLayout>

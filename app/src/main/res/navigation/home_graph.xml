@@ -7,18 +7,18 @@
 
     <fragment
         android:id="@+id/navigation_mission_donation"
-        android:name="com.example.mova.MissionDonationFragment"
+        android:name="com.example.mova.ui.missiondonation.MissionDonationFragment"
         android:label="@string/label_mission_donation"
         tools:layout="@layout/fragment_mission_donation" />
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.mova.HomeFragment"
+        android:name="com.example.mova.ui.home.HomeFragment"
         android:label="@string/label_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/navigation_mypage"
-        android:name="com.example.mova.MypageFragment"
+        android:name="com.example.mova.ui.mypage.MypageFragment"
         android:label="@string/label_mypage"
         tools:layout="@layout/fragment_mypage" />
 
