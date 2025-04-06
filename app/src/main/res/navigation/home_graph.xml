@@ -15,11 +15,20 @@
         android:id="@+id/navigation_home"
         android:name="com.example.mova.ui.home.HomeFragment"
         android:label="@string/label_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_movie_detail"
+            app:destination="@id/navigation_movie_detail" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_mypage"
         android:name="com.example.mova.ui.mypage.MypageFragment"
         android:label="@string/label_mypage"
         tools:layout="@layout/fragment_mypage" />
+    <fragment
+        android:id="@+id/navigation_movie_detail"
+        android:name="com.example.mova.ui.movie.MovieDetailFragment"
+        android:label="영화 상세"
+        tools:layout="@layout/fragment_movie_detail"/>
 
 </navigation>

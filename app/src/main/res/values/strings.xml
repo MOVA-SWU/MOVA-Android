@@ -11,4 +11,7 @@
     <string name="hint_login_id">아이디</string>
     <string name="hint_login_password">비밀번호</string>
     <string name="description_btn_login">로그인 버튼</string>
+    <string name="description_home_btn_bell">홈 알림 버튼</string>
+    <string name="description_home_btn_search">홈 화면 검색 버튼</string>
+    <string name="description_home_btn_movie_add">영화 추가 버튼</string>
 </resources>
