@@ -25,7 +25,7 @@
         android:layout_height="@dimen/bottom_navigation_height"
         android:layout_marginHorizontal="@dimen/bottom_navigation_margin_horizontal"
         android:layout_marginBottom="@dimen/bottom_navigation_margin_bottom"
-        android:background="@drawable/background_white_40"
+        android:background="@drawable/background_white95_40"
         app:itemActiveIndicatorStyle="@null"
         app:itemRippleColor="@android:color/transparent"
         app:labelVisibilityMode="unlabeled"

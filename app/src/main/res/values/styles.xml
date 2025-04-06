@@ -5,6 +5,11 @@
         <item name="android:fontFamily">@font/font_inter_semibold</item>
     </style>
 
+    <style name="InterSemiBold.Gray100.S14" parent="InterSemiBold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_100</item>
+    </style>
+
     <style name="InterSemiBold.Gray700.S20" parent="InterSemiBold">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray_700</item>
@@ -18,6 +23,11 @@
     <style name="InterMedium">
         <item name="android:fontWeight">500</item>
         <item name="android:fontFamily">@font/font_inter_medium</item>
+    </style>
+
+    <style name="InterMedium.Primary.S20" parent="InterMedium">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/primary</item>
     </style>
 
     <style name="InterMedium.White.S18" parent="InterMedium">
@@ -35,6 +45,11 @@
         <item name="android:textColor">@color/gray_400</item>
     </style>
 
+    <style name="InterMedium.Gray300.S16" parent="InterMedium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_300</item>
+    </style>
+
     <style name="InterMedium.Gray200.S16" parent="InterMedium">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/gray_200</item>
@@ -43,5 +58,9 @@
     <style name="InterMedium.Gray400.S11" parent="InterMedium">
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/gray_400</item>
+    </style>
+    
+    <style name="AppRoundedImage10">
+        <item name="cornerSize">10dp</item>
     </style>
 </resources>
