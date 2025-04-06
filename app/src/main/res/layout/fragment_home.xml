@@ -115,6 +115,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 
+    <TextView
+        android:id="@+id/tv_home_movie_null"
+        style="@style/InterMedium.Gray300.S16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="아직 기록된 영화가 없어요"
+        android:visibility="gone" />
+
     <ImageButton
         android:id="@+id/btn_home_movie_add"
         android:layout_width="wrap_content"

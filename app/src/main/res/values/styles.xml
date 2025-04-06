@@ -45,6 +45,11 @@
         <item name="android:textColor">@color/gray_400</item>
     </style>
 
+    <style name="InterMedium.Gray300.S16" parent="InterMedium">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gray_300</item>
+    </style>
+
     <style name="InterMedium.Gray200.S16" parent="InterMedium">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/gray_200</item>
