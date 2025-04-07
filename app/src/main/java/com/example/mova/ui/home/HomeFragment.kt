@@ -60,6 +60,9 @@ class HomeFragment : Fragment() {
 
     private fun setLayout() {
         setAdapter()
+        binding.btnHomeMovieAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_movie_write)
+        }
     }
 
     private fun setAdapter() {

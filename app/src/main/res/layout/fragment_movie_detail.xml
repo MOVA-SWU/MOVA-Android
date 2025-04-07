@@ -59,7 +59,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_movie_detail_poster" />
 
         <TextView
-            android:id="@+id/tv_movie_detail_name_field"
+            android:id="@+id/et_movie_detail_name_field"
             style="@style/InterMedium.Gray500.S13"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -70,30 +70,30 @@
             app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_name" />
 
         <TextView
-            android:id="@+id/tv_movie_detail_scope"
+            android:id="@+id/tv_movie_detail_rating"
             style="@style/InterMedium.Gray300.S12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="별점"
-            app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_name_field"
-            app:layout_constraintStart_toStartOf="@id/tv_movie_detail_name_field"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_name_field" />
+            app:layout_constraintEnd_toEndOf="@id/et_movie_detail_name_field"
+            app:layout_constraintStart_toStartOf="@id/et_movie_detail_name_field"
+            app:layout_constraintTop_toBottomOf="@id/et_movie_detail_name_field" />
 
         <androidx.appcompat.widget.AppCompatRatingBar
-            android:id="@+id/ratingbar_movie_detail_scope"
+            android:id="@+id/ratingbar_movie_detail_rating"
             style="@style/Widget.AppCompat.RatingBar.Small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
             android:isIndicator="true"
             android:numStars="5"
-            android:progressBackgroundTint="@color/gray_55"
+            android:progressBackgroundTint="@color/gray_500"
             android:progressTint="@color/primary"
             android:rating="2"
             android:stepSize="0.5"
-            app:layout_constraintStart_toStartOf="@id/tv_movie_detail_scope"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_scope" />
+            app:layout_constraintStart_toStartOf="@id/tv_movie_detail_rating"
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_rating" />
 
         <TextView
             android:id="@+id/tv_movie_detail_date"
@@ -102,9 +102,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="날짜"
-            app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_scope"
-            app:layout_constraintStart_toStartOf="@id/tv_movie_detail_scope"
-            app:layout_constraintTop_toBottomOf="@id/ratingbar_movie_detail_scope" />
+            app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_rating"
+            app:layout_constraintStart_toStartOf="@id/tv_movie_detail_rating"
+            app:layout_constraintTop_toBottomOf="@id/ratingbar_movie_detail_rating" />
 
         <TextView
             android:id="@+id/tv_movie_detail_date_field"
@@ -130,7 +130,7 @@
             app:layout_constraintTop_toTopOf="@id/tv_movie_detail_date_field" />
 
         <TextView
-            android:id="@+id/tv_movie_detail_content"
+            android:id="@+id/et_movie_detail_content"
             style="@style/InterMedium.Gray400.S13"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -154,7 +154,7 @@
             android:layout_marginTop="32dp"
             android:text="AI 미션"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_content" />
+            app:layout_constraintTop_toBottomOf="@id/et_movie_detail_content" />
 
         <TextView
             android:id="@+id/tv_movie_detail_ai_mission_field"
@@ -202,8 +202,8 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="84dp"
             android:background="@color/gray_70"
-            android:scaleType="fitCenter"
             android:contentDescription="@string/description_movie_detail_character"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="150:150"
             app:layout_constraintEnd_toEndOf="parent"
