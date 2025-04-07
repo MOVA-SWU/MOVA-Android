@@ -14,4 +14,7 @@
     <string name="description_home_btn_bell">홈 알림 버튼</string>
     <string name="description_home_btn_search">홈 화면 검색 버튼</string>
     <string name="description_home_btn_movie_add">영화 추가 버튼</string>
+    <string name="description_movie_detail_btn_back">영화 상세 뒤로가기 버튼</string>
+    <string name="description_movie_detail_btn_date">영화 상세 날짜 선택 버튼</string>
+    <string name="description_movie_detail_character">영화 상세 캐릭터 이미지</string>
 </resources>
