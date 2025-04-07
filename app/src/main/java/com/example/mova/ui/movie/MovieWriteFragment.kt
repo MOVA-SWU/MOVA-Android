@@ -40,6 +40,7 @@ class MovieWriteFragment: Fragment() {
         binding.btnMovieWriteBack.setOnClickListener {
             findNavController().navigateUp()
         }
+
         setTodayDate()
         setDatePicker()
         setEditTextScroll()
@@ -53,13 +54,20 @@ class MovieWriteFragment: Fragment() {
                 val isContentNotEmpty = binding.etMovieWriteContent.text.toString().trim().isNotEmpty()
 
                 if (isNameNotEmpty && isContentNotEmpty) {
-                    binding.btnMovieWriteAdd.isEnabled = true
-                    binding.btnMovieWriteAdd.setBackgroundResource(R.drawable.background_primary_40)
-                    binding.btnMovieWriteAdd.setTextAppearance(R.style.InterMedium_White_S18)
+                    with(binding.btnMovieWriteAdd) {
+                        isEnabled = true
+                        setBackgroundResource(R.drawable.background_primary_40)
+                        setTextAppearance(R.style.InterMedium_White_S18)
+                        setOnClickListener {
+                            findNavController().navigate(R.id.action_movie_write_to_ai)
+                        }
+                    }
                 } else {
-                    binding.btnMovieWriteAdd.isEnabled = false
-                    binding.btnMovieWriteAdd.setBackgroundResource(R.drawable.background_gray25_40)
-                    binding.btnMovieWriteAdd.setTextAppearance(R.style.InterMedium_Gray200_S18)
+                    with(binding.btnMovieWriteAdd) {
+                        isEnabled = false
+                        setBackgroundResource(R.drawable.background_gray25_40)
+                        setTextAppearance(R.style.InterMedium_Gray200_S18)
+                    }
                 }
             }
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) { }

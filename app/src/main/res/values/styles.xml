@@ -5,6 +5,11 @@
         <item name="android:fontFamily">@font/font_inter_semibold</item>
     </style>
 
+    <style name="InterSemiBold.Primary.S14" parent="InterSemiBold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
     <style name="InterSemiBold.Gray100.S14" parent="InterSemiBold">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/gray_100</item>
@@ -18,6 +23,11 @@
     <style name="InterSemiBold.Gray700.S20" parent="InterSemiBold">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray_700</item>
+    </style>
+
+    <style name="InterSemiBold.Primary.S26" parent="InterSemiBold">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/primary</item>
     </style>
 
     <style name="InterSemiBold.Primary.S40" parent="InterSemiBold">
@@ -93,6 +103,11 @@
     <style name="InterMedium.Primary100.S10" parent="InterMedium">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/primary_100</item>
+    </style>
+
+    <style name="InterMedium.Gray350.S10" parent="InterMedium">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/gray_350</item>
     </style>
     
     <style name="AppRoundedImage10">
