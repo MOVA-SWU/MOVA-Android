@@ -51,5 +51,14 @@
             android:id="@+id/action_ai_to_home"
             app:destination="@id/navigation_home" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_mission"
+        android:name="com.example.mova.ui.missiondonation.MissionFragment"
+        android:label="미션"
+        tools:layout="@layout/fragment_mission">
+        <action
+            android:id="@+id/action_mission_to_movie_detail"
+            app:destination="@id/navigation_movie_detail" />
+    </fragment>
 
 </navigation>

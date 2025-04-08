@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_50">
+
+    <TextView
+        android:id="@+id/tv_mission_point"
+        style="@style/InterMedium.White.S12"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="26dp"
+        android:background="@drawable/background_primary_16"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="22dp"
+        android:text="미션으로 모은 포인트"
+        app:layout_constraintDimensionRatio="326:60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_mission_point_field"
+        style="@style/InterMedium.White.S24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="22dp"
+        android:text="100 P"
+        app:layout_constraintBottom_toBottomOf="@id/tv_mission_point"
+        app:layout_constraintEnd_toEndOf="@id/tv_mission_point"
+        app:layout_constraintTop_toTopOf="@id/tv_mission_point" />
+
+    <RadioGroup
+        android:id="@+id/btn_radio_mission"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="39dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_mission_point">
+
+        <RadioButton
+            android:id="@+id/btn_radio_possible"
+            style="@style/InterMedium.White.S10"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/selector_mission_list"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="참여 가능"
+            android:textColor="@color/selector_mission_list_text_color" />
+
+        <RadioButton
+            android:id="@+id/btn_radio_impossible"
+            style="@style/InterMedium.Gray330.S10"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:background="@drawable/selector_mission_list"
+            android:button="@android:color/transparent"
+            android:clickable="true"
+            android:gravity="center"
+            android:text="참여 완료"
+            android:textColor="@color/selector_mission_list_text_color" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_mission_list_null"
+        style="@style/InterMedium.Gray300.S16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="아직 참여 가능한 미션이 없어요"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_radio_mission" />
+
+    <TextView
+        android:id="@+id/tv_mission_list_complete_null"
+        style="@style/InterMedium.Gray300.S16"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="아직 완료한 미션이 없어요"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_radio_mission" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_mission_list"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="35dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="110dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_radio_mission"
+        tools:listitem="@layout/item_mission_list" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

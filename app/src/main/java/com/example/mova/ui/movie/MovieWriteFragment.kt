@@ -1,6 +1,5 @@
 package com.example.mova.ui.movie
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -43,7 +42,6 @@ class MovieWriteFragment: Fragment() {
 
         setTodayDate()
         setDatePicker()
-        setEditTextScroll()
         setBtnColorChange()
     }
 
@@ -75,14 +73,6 @@ class MovieWriteFragment: Fragment() {
         }
         binding.etMovieWriteNameField.addTextChangedListener(watcher)
         binding.etMovieWriteContent.addTextChangedListener(watcher)
-    }
-
-    @SuppressLint("ClickableViewAccessibility")
-    private fun setEditTextScroll() {
-        binding.etMovieWriteContent.setOnTouchListener { v, event ->
-            v.parent.requestDisallowInterceptTouchEvent(true)
-            false
-        }
     }
 
     private fun setTodayDate() {

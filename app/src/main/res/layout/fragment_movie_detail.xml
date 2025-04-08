@@ -113,34 +113,21 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
             android:text="2025.03.09"
-            app:layout_constraintEnd_toStartOf="@id/btn_movie_detail_date"
             app:layout_constraintStart_toStartOf="@id/tv_movie_detail_date"
             app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_date" />
-
-        <ImageButton
-            android:id="@+id/btn_movie_detail_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@android:color/transparent"
-            android:contentDescription="@string/description_movie_detail_btn_date"
-            android:src="@drawable/ic_arrow_under"
-            app:layout_constraintBottom_toBottomOf="@id/tv_movie_detail_date_field"
-            app:layout_constraintStart_toEndOf="@id/tv_movie_detail_date_field"
-            app:layout_constraintTop_toTopOf="@id/tv_movie_detail_date_field" />
 
         <TextView
             android:id="@+id/et_movie_detail_content"
             style="@style/InterMedium.Gray400.S13"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="26dp"
             android:layout_marginTop="32dp"
             android:background="@drawable/background_white_13_stroke"
+            android:minHeight="219dp"
             android:paddingHorizontal="25dp"
             android:paddingVertical="22dp"
             android:text="영화 제목과 동명인 주인공 로봇의 모험과, 그 과정에서 알게모르게 스며들어있는 여러 교훈들은 깊은 울림을 주기에 모자람이 없다."
-            app:layout_constraintDimensionRatio="337:219"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_movie_detail_poster" />
@@ -172,14 +159,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_ai_mission" />
 
-        <TextView
-            android:id="@+id/tv_movie_detail_point"
-            style="@style/InterMedium.Primary100.S10"
+        <Button
+            android:id="@+id/btn_movie_detail_point"
+            style="@style/InterMedium.White100.S10"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginEnd="20dp"
-            android:text="100 포인트"
+            android:background="@drawable/background_primary_60"
+            android:padding="0dp"
+            android:text="100 P"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="@id/tv_movie_detail_ai_mission_field"
+            app:layout_constraintDimensionRatio="75:25"
             app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_ai_mission_field"
             app:layout_constraintTop_toTopOf="@id/tv_movie_detail_ai_mission_field" />
 

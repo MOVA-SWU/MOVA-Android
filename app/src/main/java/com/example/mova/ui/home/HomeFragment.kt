@@ -90,7 +90,6 @@ class HomeFragment : Fragment() {
 
             TabLayoutMediator(
                 binding.viewpagerHomeBannerIndicator, this) { tab, position ->
-
             }.attach()
         }
 
