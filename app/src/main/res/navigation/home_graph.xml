@@ -9,7 +9,14 @@
         android:id="@+id/navigation_mission_donation"
         android:name="com.example.mova.ui.missiondonation.MissionDonationFragment"
         android:label="@string/label_mission_donation"
-        tools:layout="@layout/fragment_mission_donation" />
+        tools:layout="@layout/fragment_mission_donation">
+        <action
+            android:id="@+id/action_donation_to_company_detail"
+            app:destination="@id/navigation_company_detail" />
+        <action
+            android:id="@+id/action_mission_to_movie_detail"
+            app:destination="@id/navigation_movie_detail" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_home"
@@ -53,12 +60,19 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_mission"
-        android:name="com.example.mova.ui.missiondonation.MissionFragment"
+        android:name="com.example.mova.ui.missiondonation.mission.MissionFragment"
         android:label="미션"
-        tools:layout="@layout/fragment_mission">
-        <action
-            android:id="@+id/action_mission_to_movie_detail"
-            app:destination="@id/navigation_movie_detail" />
-    </fragment>
+        tools:layout="@layout/fragment_mission" />
+    <fragment
+        android:id="@+id/navigation_donation"
+        android:name="com.example.mova.ui.missiondonation.donation.DonationFragment"
+        android:label="후원"
+        tools:layout="@layout/fragment_donation" />
+    <fragment
+        android:id="@+id/navigation_company_detail"
+        android:name="com.example.mova.ui.missiondonation.donation.CompanyDetailFragment"
+        android:label="제작사 상세"
+        tools:layout="@layout/fragment_company_detail" />
+
 
 </navigation>

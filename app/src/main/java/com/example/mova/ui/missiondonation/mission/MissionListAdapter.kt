@@ -1,4 +1,4 @@
-package com.example.mova.ui.missiondonation
+package com.example.mova.ui.missiondonation.mission
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
