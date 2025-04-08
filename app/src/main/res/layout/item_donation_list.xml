@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp">
+
+    <TextView
+        android:id="@+id/tv_donation_company_name"
+        style="@style/InterSemiBold.Gray800.S14"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_white100_16"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="28dp"
+        android:text="롯데컬처웍스(주)"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="326:72"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/btn_donation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="9dp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description_donation_btn_company"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="@id/tv_donation_company_name"
+        app:layout_constraintEnd_toEndOf="@id/tv_donation_company_name"
+        app:layout_constraintTop_toTopOf="@id/tv_donation_company_name" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,13 @@
-package com.example.mova.ui.missiondonation
+package com.example.mova.ui.missiondonation.mission
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
 import com.example.mova.data.model.Mission
@@ -19,7 +21,8 @@ class MissionFragment : Fragment() {
 
     private val missionAdapter = MissionListAdapter(object: MovieClickListener {
         override fun onMovieClick(movieId: String) {
-            findNavController().navigate(R.id.action_mission_to_movie_detail)
+            (requireActivity() as AppCompatActivity)
+                .findNavController(R.id.container_home).navigate(R.id.action_mission_to_movie_detail)
         }
     })
 

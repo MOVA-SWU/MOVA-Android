@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_50"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/btn_company_detail_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="34dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description_company_detail_btn_back"
+            android:src="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_company_detail_title"
+            style="@style/InterMedium.Primary.S16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="제작사 후원"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_company_detail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="27dp"
+            android:layout_marginTop="124dp"
+            android:background="@color/gray_55"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="337:140"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/AppRoundedImage10" />
+
+        <TextView
+            android:id="@+id/tv_company_detail_name"
+            style="@style/InterSemiBold.Gray800.S16"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="30dp"
+            android:text="월트디즈니컴퍼니코리아 유한책임회사"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_company_detail" />
+
+        <TextView
+            android:id="@+id/tv_company_detail_content"
+            style="@style/InterMedium.Gray500.S13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="12dp"
+            android:lineSpacingExtra="5dp"
+            android:text="디즈니컴퍼니코리아 유한책임회사는 월트디즈니컴퍼니디즈니 코리아 유한책임회사는 월트디즈니컴퍼니코리아 유한책임회사 사는월트디즈니컴퍼니코리아 유한책임회사는 사는월트디즈니컴퍼니코리아 유한책임회사는"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_company_detail_name" />
+
+        <TextView
+            android:id="@+id/tv_company_detail_movie"
+            style="@style/InterMedium.Gray300.S12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="36dp"
+            android:text="제작 영화"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_company_detail_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_company_detail_movie"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="26dp"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/btn_company_detail_donate"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_company_detail_movie"
+            app:layout_constraintVertical_chainStyle="spread_inside"
+            tools:listitem="@layout/item_company_movie_list" />
+
+        <Button
+            android:id="@+id/btn_company_detail_donate"
+            style="@style/InterMedium.White.S18"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="135dp"
+            android:layout_marginBottom="68dp"
+            android:background="@drawable/background_primary_40"
+            android:text="후원하기"
+            app:backgroundTint="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rv_company_detail_movie" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
