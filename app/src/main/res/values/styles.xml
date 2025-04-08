@@ -20,6 +20,11 @@
         <item name="android:textColor">@color/gray_500</item>
     </style>
 
+    <style name="InterSemiBold.Gray800.S14" parent="InterSemiBold">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray_800</item>
+    </style>
+
     <style name="InterSemiBold.Gray700.S20" parent="InterSemiBold">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray_700</item>
@@ -38,6 +43,11 @@
     <style name="InterMedium">
         <item name="android:fontWeight">500</item>
         <item name="android:fontFamily">@font/font_inter_medium</item>
+    </style>
+
+    <style name="InterMedium.White.S24" parent="InterMedium">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="InterMedium.Primary.S20" parent="InterMedium">
@@ -80,6 +90,16 @@
         <item name="android:textColor">@color/gray_200</item>
     </style>
 
+    <style name="InterMedium.White.S15" parent="InterMedium">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="InterMedium.Gray330.S15" parent="InterMedium">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/gray_330</item>
+    </style>
+
     <style name="InterMedium.Gray500.S13" parent="InterMedium">
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/gray_500</item>
@@ -88,6 +108,11 @@
     <style name="InterMedium.Gray400.S13" parent="InterMedium">
         <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/gray_400</item>
+    </style>
+
+    <style name="InterMedium.White.S12" parent="InterMedium">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="InterMedium.Gray300.S12" parent="InterMedium">
@@ -108,6 +133,21 @@
     <style name="InterMedium.Gray350.S10" parent="InterMedium">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/gray_350</item>
+    </style>
+
+    <style name="InterMedium.Gray330.S10" parent="InterMedium">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/gray_330</item>
+    </style>
+
+    <style name="InterMedium.White.S10" parent="InterMedium">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="InterMedium.White100.S10" parent="InterMedium">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/white_100</item>
     </style>
     
     <style name="AppRoundedImage10">
