@@ -30,14 +30,29 @@
         <item name="android:textColor">@color/gray_800</item>
     </style>
 
+    <style name="InterSemiBold.White100.S16" parent="InterSemiBold">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white_100</item>
+    </style>
+
     <style name="InterSemiBold.Gray700.S20" parent="InterSemiBold">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/gray_700</item>
     </style>
 
+    <style name="InterSemiBold.Gray800.S20" parent="InterSemiBold">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/gray_800</item>
+    </style>
+
     <style name="InterSemiBold.Primary.S26" parent="InterSemiBold">
         <item name="android:textSize">26sp</item>
         <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="InterSemiBold.Gray800.S36" parent="InterSemiBold">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/gray_800</item>
     </style>
 
     <style name="InterSemiBold.Primary.S40" parent="InterSemiBold">
@@ -150,6 +165,11 @@
         <item name="android:textColor">@color/gray_330</item>
     </style>
 
+    <style name="InterMedium.Gray300.S10" parent="InterMedium">
+        <item name="android:textSize">10sp</item>
+        <item name="android:textColor">@color/gray_300</item>
+    </style>
+
     <style name="InterMedium.White.S10" parent="InterMedium">
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/white</item>
@@ -159,9 +179,18 @@
         <item name="android:textSize">10sp</item>
         <item name="android:textColor">@color/white_100</item>
     </style>
+
+    <style name="InterMedium.White100.S8" parent="InterMedium">
+        <item name="android:textSize">8sp</item>
+        <item name="android:textColor">@color/white_100</item>
+    </style>
     
     <style name="AppRoundedImage10">
         <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="AppRoundedImage16">
+        <item name="cornerSize">16dp</item>
     </style>
 
     <style name="DatePicker" parent="ThemeOverlay.Material3.MaterialCalendar">

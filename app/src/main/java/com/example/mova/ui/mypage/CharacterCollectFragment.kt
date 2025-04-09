@@ -1,4 +1,4 @@
-package com.example.mova.ui.missiondonation.donation
+package com.example.mova.ui.mypage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,22 +6,22 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.mova.data.model.Movie
-import com.example.mova.databinding.FragmentCompanyDetailBinding
+import com.example.mova.data.model.Character
+import com.example.mova.databinding.FragmentCharacterCollectBinding
 
-class CompanyDetailFragment : Fragment() {
+class CharacterCollectFragment : Fragment() {
 
-    private var _binding: FragmentCompanyDetailBinding? = null
+    private var _binding: FragmentCharacterCollectBinding? = null
     private val binding get() = _binding!!
 
-    private val companyMovieAdapter = CompanyMovieAdapter()
+    private val characterCollectAdapter = CharacterCollectAdapter()
 
-    val dummyMovies = listOf(
-        Movie(1, ""),
-        Movie(2, ""),
-        Movie(3, ""),
-        Movie(4, ""),
-        Movie(5, "")
+    val dummyCharacter = listOf(
+        Character(1, ""),
+        Character(2, ""),
+        Character(3, ""),
+        Character(4, ""),
+        Character(5, "")
     )
 
     override fun onCreateView(
@@ -29,7 +29,7 @@ class CompanyDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentCompanyDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentCharacterCollectBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -37,23 +37,20 @@ class CompanyDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setLayout()
+
     }
 
     private fun setLayout() {
-        binding.btnCompanyDetailBack.setOnClickListener {
-            findNavController().navigateUp()
-        }
-        binding.btnCompanyDetailDonate.setOnClickListener {
+        binding.btnCharacterCollectBack.setOnClickListener {
             findNavController().navigateUp()
         }
         setAdapter()
     }
 
     private fun setAdapter() {
-        binding.rvCompanyDetailMovie.adapter = companyMovieAdapter
-        companyMovieAdapter.submitList(dummyMovies)
+        binding.rvCharacterCollect.adapter = characterCollectAdapter
+        characterCollectAdapter.submitWithPlaceholders(dummyCharacter)
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

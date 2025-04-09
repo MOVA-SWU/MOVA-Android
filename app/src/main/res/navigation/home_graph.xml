@@ -34,7 +34,11 @@
         android:id="@+id/navigation_mypage"
         android:name="com.example.mova.ui.mypage.MypageFragment"
         android:label="@string/label_mypage"
-        tools:layout="@layout/fragment_mypage" />
+        tools:layout="@layout/fragment_mypage">
+        <action
+            android:id="@+id/action_mypage_to_character_collect"
+            app:destination="@id/navigation_character_collect" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_movie_detail"
         android:name="com.example.mova.ui.movie.MovieDetailFragment"
@@ -73,6 +77,10 @@
         android:name="com.example.mova.ui.missiondonation.donation.CompanyDetailFragment"
         android:label="제작사 상세"
         tools:layout="@layout/fragment_company_detail" />
-
+    <fragment
+        android:id="@+id/navigation_character_collect"
+        android:name="com.example.mova.ui.mypage.CharacterCollectFragment"
+        android:label="캐릭터 수집 현황"
+        tools:layout="@layout/fragment_character_collect" />
 
 </navigation>
