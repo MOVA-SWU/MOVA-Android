@@ -25,4 +25,6 @@
     <string name="description_mission_list_btn">미션 리스트 버튼</string>
     <string name="description_donation_btn_company">제작사 리스트 버튼</string>
     <string name="description_company_detail_btn_back">제작사 후원 뒤로가기 버튼</string>
+    <string name="description_mypage_profile">마이페이지 프로필 이미지</string>
+    <string name="description_character_collect_btn_back">캐릭터 수집 현황 뒤로가기</string>
 </resources>

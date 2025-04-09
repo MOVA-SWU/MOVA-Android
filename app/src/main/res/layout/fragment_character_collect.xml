@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_50">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/btn_character_collect_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="34dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/description_character_collect_btn_back"
+            android:src="@drawable/ic_arrow_back_blue"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_character_collect"
+            style="@style/InterSemiBold.Gray800.S20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="133dp"
+            android:text="내 캐릭터 현황"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_character_collect_field"
+            style="@style/InterSemiBold.Gray800.S36"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="11dp"
+            android:text="5개"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_collect" />
+
+        <Button
+            android:id="@+id/btn_character_collect_add"
+            style="@style/InterMedium.Gray330.S10"
+            android:layout_width="161dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginTop="53dp"
+            android:background="@drawable/background_white100_60"
+            android:drawableEnd="@drawable/ic_arrow_character"
+            android:gravity="start"
+            android:paddingVertical="0dp"
+            android:paddingStart="14dp"
+            android:paddingEnd="4dp"
+            android:text="캐릭터 더 모으러 가기"
+            app:backgroundTint="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_character_collect_field" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_character_collect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="22dp"
+            android:layout_marginTop="19dp"
+            android:paddingBottom="167dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_character_collect_add"
+            app:spanCount="3"
+            tools:itemCount="9"
+            tools:listitem="@layout/item_character_collect" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

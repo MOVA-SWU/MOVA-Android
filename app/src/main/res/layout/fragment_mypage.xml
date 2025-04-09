@@ -1,6 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray_50"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_mypage_profile"
+            android:layout_width="111dp"
+            android:layout_height="111dp"
+            android:layout_marginHorizontal="141dp"
+            android:layout_marginTop="115dp"
+            android:background="@color/gray_55"
+            android:contentDescription="@string/description_mypage_profile"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_mypage_nickname"
+            style="@style/InterSemiBold.Gray800.S20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="115dp"
+            android:layout_marginTop="23dp"
+            android:gravity="center"
+            android:text="디즈니킬러입니다만"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_mypage_profile" />
+
+        <Button
+            android:id="@+id/btn_mypage_nickname_edit"
+            style="@style/InterMedium.Gray330.S10"
+            android:layout_width="75dp"
+            android:layout_height="25dp"
+            android:layout_marginHorizontal="159dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/background_white100_60"
+            android:padding="0dp"
+            android:text="닉네임 수정"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_nickname" />
+
+        <View
+            android:id="@+id/view_mypage_left"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/background_primary_16_left_half"
+            app:layout_constraintEnd_toStartOf="@id/view_mypage_right"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_mypage_nickname_edit" />
+
+        <View
+            android:id="@+id/view_mypage_right"
+            android:layout_width="0dp"
+            android:layout_height="75dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="35dp"
+            android:background="@drawable/background_primary_16_right_half"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/view_mypage_left"
+            app:layout_constraintTop_toBottomOf="@id/btn_mypage_nickname_edit" />
+
+        <TextView
+            android:id="@+id/tv_mypage_point_field"
+            style="@style/InterSemiBold.White100.S16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="500P"
+            app:layout_constraintEnd_toEndOf="@id/view_mypage_left"
+            app:layout_constraintStart_toStartOf="@id/view_mypage_left"
+            app:layout_constraintTop_toTopOf="@id/view_mypage_left" />
+
+        <TextView
+            android:id="@+id/tv_mypage_my_point"
+            style="@style/InterMedium.White100.S8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="18dp"
+            android:text="내 포인트"
+            app:layout_constraintBottom_toBottomOf="@id/view_mypage_left"
+            app:layout_constraintEnd_toEndOf="@id/view_mypage_left"
+            app:layout_constraintStart_toStartOf="@id/view_mypage_left"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_point_field" />
+
+        <ImageView
+            android:id="@+id/iv_mypage_point"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_point"
+            app:layout_constraintEnd_toEndOf="@id/view_mypage_right"
+            app:layout_constraintStart_toStartOf="@id/view_mypage_right"
+            app:layout_constraintTop_toTopOf="@id/view_mypage_right" />
+
+        <TextView
+            android:id="@+id/tv_mypage_point_add"
+            style="@style/InterMedium.White100.S8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="18dp"
+            android:text="포인트 받기"
+            app:layout_constraintBottom_toBottomOf="@id/view_mypage_right"
+            app:layout_constraintEnd_toEndOf="@id/view_mypage_right"
+            app:layout_constraintStart_toStartOf="@id/view_mypage_right"
+            app:layout_constraintTop_toBottomOf="@id/iv_mypage_point" />
+
+        <View
+            android:id="@+id/view_mypage_character"
+            android:layout_width="0dp"
+            android:layout_height="101dp"
+            android:layout_marginHorizontal="35dp"
+            android:layout_marginTop="36dp"
+            android:background="@drawable/background_white100_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_mypage_left" />
+
+        <TextView
+            android:id="@+id/tv_mypage_my_character"
+            style="@style/InterMedium.Gray300.S10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="21dp"
+            android:text="내 캐릭터"
+            app:layout_constraintStart_toStartOf="@id/view_mypage_character"
+            app:layout_constraintTop_toTopOf="@id/view_mypage_character" />
+
+        <TextView
+            android:id="@+id/tv_mypage_character_collect"
+            style="@style/InterSemiBold.Gray800.S14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="19dp"
+            android:text="수집현황"
+            app:layout_constraintBottom_toBottomOf="@id/view_mypage_character"
+            app:layout_constraintStart_toStartOf="@id/view_mypage_character"
+            app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_character" />
+
+        <ImageButton
+            android:id="@+id/btn_mypage_character_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="@id/tv_mypage_character_collect"
+            app:layout_constraintEnd_toEndOf="@id/view_mypage_character"
+            app:layout_constraintTop_toTopOf="@id/tv_mypage_character_collect" />
+
+        <TextView
+            android:id="@+id/tv_mypage_logout"
+            style="@style/InterMedium.Gray300.S10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="21dp"
+            android:paddingBottom="258dp"
+            android:text="로그아웃"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_mypage_character" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
