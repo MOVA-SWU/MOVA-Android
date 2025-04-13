@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="영화 상세"
+            android:text="@string/label_movie_detail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -53,7 +53,7 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="25dp"
-            android:text="제목"
+            android:text="@string/label_movie_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_movie_detail_poster"
             app:layout_constraintTop_toTopOf="@id/iv_movie_detail_poster" />
@@ -75,7 +75,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="별점"
+            android:text="@string/label_movie_rating"
             app:layout_constraintEnd_toEndOf="@id/et_movie_detail_name_field"
             app:layout_constraintStart_toStartOf="@id/et_movie_detail_name_field"
             app:layout_constraintTop_toBottomOf="@id/et_movie_detail_name_field" />
@@ -101,7 +101,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="날짜"
+            android:text="@string/label_movie_date"
             app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_rating"
             app:layout_constraintStart_toStartOf="@id/tv_movie_detail_rating"
             app:layout_constraintTop_toBottomOf="@id/ratingbar_movie_detail_rating" />
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="33dp"
             android:layout_marginTop="32dp"
-            android:text="AI 미션"
+            android:text="@string/label_mission_ai"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_movie_detail_content" />
 
@@ -180,7 +180,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="미션 보상"
+            android:text="@string/label_mission_character"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_ai_mission_field" />

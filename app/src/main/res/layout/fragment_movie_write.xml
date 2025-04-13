@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="영화 기록"
+            android:text="@string/label_movie_write"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -55,7 +55,7 @@
             android:layout_marginStart="22dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="25dp"
-            android:text="제목"
+            android:text="@string/label_movie_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/iv_movie_write_poster"
             app:layout_constraintTop_toTopOf="@id/iv_movie_write_poster" />
@@ -79,7 +79,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="별점"
+            android:text="@string/label_movie_rating"
             app:layout_constraintEnd_toEndOf="@id/et_movie_write_name_field"
             app:layout_constraintStart_toStartOf="@id/et_movie_write_name_field"
             app:layout_constraintTop_toBottomOf="@id/et_movie_write_name_field" />
@@ -105,7 +105,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="날짜"
+            android:text="@string/label_movie_date"
             app:layout_constraintEnd_toEndOf="@id/tv_movie_write_rating"
             app:layout_constraintStart_toStartOf="@id/tv_movie_write_rating"
             app:layout_constraintTop_toBottomOf="@id/ratingbar_movie_write_rating" />
@@ -163,7 +163,7 @@
             android:layout_marginTop="126dp"
             android:layout_marginBottom="68dp"
             android:background="@drawable/background_gray25_40"
-            android:text="완료"
+            android:text="@string/label_complete"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

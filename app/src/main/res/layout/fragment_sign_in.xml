@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginTop="38dp"
-        android:text="회원정보 입력"
+        android:text="@string/label_member_insert"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_signin_back" />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginTop="58dp"
-        android:text="아이디"
+        android:text="@string/label_id"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_member_insert" />
 
@@ -69,7 +69,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginEnd="23dp"
         android:background="@drawable/background_gray25_40"
-        android:text="중복확인"
+        android:text="@string/label_id_check"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="4"
@@ -83,7 +83,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginTop="29dp"
-        android:text="비밀번호"
+        android:text="@string/label_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_sign_in_id" />
 
@@ -110,7 +110,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginTop="29dp"
-        android:text="비밀번호 확인"
+        android:text="@string/label_password_check"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_sign_in_password" />
 
@@ -137,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="23dp"
         android:layout_marginTop="29dp"
-        android:text="닉네임"
+        android:text="@string/label_nickname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_sign_in_password_check" />
 
@@ -159,13 +159,13 @@
 
     <Button
         android:id="@+id/btn_sign_in"
-        style="@style/InterMedium.White.S18"
+        style="@style/InterMedium.Gray200.S18"
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginHorizontal="23dp"
         android:layout_marginBottom="68dp"
-        android:background="@drawable/background_primary_40"
-        android:text="회원가입"
+        android:background="@drawable/background_gray25_40"
+        android:text="@string/label_signin"
         app:backgroundTint="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
