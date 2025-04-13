@@ -1,15 +1,54 @@
 <resources>
-    <string name="app_name">Mova</string>
+    <string name="app_name">MOVA</string>
 
+    <!--    label-->
+    <string name="label_loading">콘이를 튀기는 중이에요\n. . .</string>
+    <string name="label_mission_start">미션 시작</string>
+    <string name="label_mission_ai">AI 미션</string>
     <string name="label_home">홈</string>
     <string name="label_mission_donation">미션/후원</string>
     <string name="label_mypage">마이페이지</string>
-    <string name="label_login_logo">MOVA</string>
+    <string name="label_login">로그인</string>
+    <string name="label_id_find">아이디 찾기</string>
+    <string name="label_password_edit">비밀번호 재설정</string>
+    <string name="label_signin">회원가입</string>
+    <string name="label_character_collect">내 캐릭터 현황</string>
+    <string name="label_character_collect_add">캐릭터 더 모으러 가기</string>
+    <string name="label_company_detail">제작사 후원</string>
+    <string name="label_company_movie">제작 영화</string>
+    <string name="label_donate">후원하기</string>
+    <string name="label_my_movie">My 영화</string>
+    <string name="label_home_movie_null">아직 기록된 영화가 없어요</string>
+    <string name="label_mission_point">미션으로 모은 포인트</string>
+    <string name="label_radio_possible">참여 가능</string>
+    <string name="label_radio_impossible">참여 완료</string>
+    <string name="label_mission_list_null">아직 참여 가능한 미션이 없어요</string>
+    <string name="label_mission_complete_null">아직 완료한 미션이 없어요</string>
+    <string name="label_movie_detail">영화 상세</string>
+    <string name="label_movie_title">제목</string>
+    <string name="label_movie_rating">별점</string>
+    <string name="label_movie_date">날짜</string>
+    <string name="label_mission_character">미션 보상</string>
+    <string name="label_movie_write">영화 기록</string>
+    <string name="label_complete">완료</string>
+    <string name="label_nickname_edit">닉네임 수정</string>
+    <string name="label_my_point">내 포인트</string>
+    <string name="label_point_add">포인트 받기</string>
+    <string name="label_my_character">내 캐릭터</string>
+    <string name="label_my_character_collect">수집현황</string>
+    <string name="label_logout">로그아웃</string>
+    <string name="label_member_insert">회원정보 입력</string>
+    <string name="label_id">아이디</string>
+    <string name="label_id_check">중복확인</string>
+    <string name="label_password">비밀번호</string>
+    <string name="label_password_check">비밀번호 확인</string>
+    <string name="label_nickname">닉네임</string>
 
+    <!--    hint-->
     <string name="hint_login_id">아이디</string>
     <string name="hint_login_password">비밀번호</string>
 
-<!--    description-->
+    <!--    description-->
     <string name="description_splash">스플래쉬 이미지</string>
     <string name="description_start">시작 페이지 이미지</string>
     <string name="description_btn_start">시작하기 버튼</string>
@@ -27,4 +66,9 @@
     <string name="description_company_detail_btn_back">제작사 후원 뒤로가기 버튼</string>
     <string name="description_mypage_profile">마이페이지 프로필 이미지</string>
     <string name="description_character_collect_btn_back">캐릭터 수집 현황 뒤로가기</string>
+    <string name="description_btn_loading_back">로딩 페이지 뒤로가기 버튼</string>
+    <string name="description_loading_image">로딩 페이지 이미지</string>
+    <string name="description_mypage_point">포인트 받기 이미지</string>
+    <string name="description_character_collect">캐릭터 수집 현황 버튼</string>
+
 </resources>

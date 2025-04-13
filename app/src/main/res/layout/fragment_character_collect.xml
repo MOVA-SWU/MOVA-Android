@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginTop="133dp"
-            android:text="내 캐릭터 현황"
+            android:text="@string/label_character_collect"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -57,7 +57,7 @@
             android:paddingVertical="0dp"
             android:paddingStart="14dp"
             android:paddingEnd="4dp"
-            android:text="캐릭터 더 모으러 가기"
+            android:text="@string/label_character_collect_add"
             app:backgroundTint="@null"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_character_collect_field" />

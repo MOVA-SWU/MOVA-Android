@@ -24,7 +24,7 @@
         android:layout_marginBottom="3dp"
         android:text="잔디 청소하고"
         app:layout_constraintBottom_toTopOf="@id/tv_mission_list_point"
-        app:layout_constraintEnd_toEndOf="@id/view_mission_list"
+        app:layout_constraintEnd_toStartOf="@id/btn_mission_list"
         app:layout_constraintStart_toStartOf="@id/view_mission_list"
         app:layout_constraintTop_toTopOf="@id/view_mission_list"
         app:layout_constraintVertical_chainStyle="packed" />

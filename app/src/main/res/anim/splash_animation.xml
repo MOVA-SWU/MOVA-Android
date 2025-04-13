@@ -12,7 +12,7 @@
         android:duration="100" />
 
     <alpha
-        android:duration="900"
+        android:duration="1000"
         android:fromAlpha="0.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:toAlpha="1.0"/>

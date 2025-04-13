@@ -24,7 +24,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="45dp"
                 android:layout_marginBottom="25dp"
-                android:text="MOVA" />
+                android:text="@string/app_name" />
 
             <ImageButton
                 android:id="@+id/btn_home_bell"
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="2dp"
-                android:text="My 영화"
+                android:text="@string/label_my_movie"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -121,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="아직 기록된 영화가 없어요"
+        android:text="@string/label_home_movie_null"
         android:visibility="gone" />
 
     <ImageButton

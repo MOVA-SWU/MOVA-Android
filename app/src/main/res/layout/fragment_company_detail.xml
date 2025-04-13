@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
-            android:text="제작사 후원"
+            android:text="@string/label_company_detail"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="36dp"
-            android:text="제작 영화"
+            android:text="@string/label_company_movie"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_company_detail_content" />
 
@@ -108,7 +108,7 @@
             android:layout_marginTop="135dp"
             android:layout_marginBottom="68dp"
             android:background="@drawable/background_primary_40"
-            android:text="후원하기"
+            android:text="@string/label_donate"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

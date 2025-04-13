@@ -1,4 +1,4 @@
-package com.example.mova.ui.mypage
+package com.example.mova.ui.movie
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
-import com.example.mova.databinding.FragmentMypageBinding
+import com.example.mova.databinding.FragmentLoadingBinding
 
-class MypageFragment : Fragment() {
+class LoadingFragment : Fragment() {
 
-    private var _binding: FragmentMypageBinding? = null
+    private var _binding : FragmentLoadingBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +19,7 @@ class MypageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMypageBinding.inflate(inflater, container, false)
+        _binding = FragmentLoadingBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,11 +30,11 @@ class MypageFragment : Fragment() {
     }
 
     private fun setLayout() {
-        binding.viewMypageCharacter.setOnClickListener {
-            findNavController().navigate(R.id.action_mypage_to_character_collect)
+        binding.btnLoadingBack.setOnClickListener {
+            findNavController().navigateUp()
         }
-        binding.viewMypageRight.setOnClickListener {
-            findNavController().navigate(R.id.action_mypage_to_mission_donation)
+        binding.ivLoading.setOnClickListener {
+            findNavController().navigate(R.id.action_loading_to_ai)
         }
     }
 
@@ -42,5 +42,4 @@ class MypageFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }

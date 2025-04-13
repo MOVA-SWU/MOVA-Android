@@ -57,7 +57,7 @@ class MovieWriteFragment: Fragment() {
                         setBackgroundResource(R.drawable.background_primary_40)
                         setTextAppearance(R.style.InterMedium_White_S18)
                         setOnClickListener {
-                            findNavController().navigate(R.id.action_movie_write_to_ai)
+                            findNavController().navigate(R.id.action_movie_write_to_loading)
                         }
                     }
                 } else {
