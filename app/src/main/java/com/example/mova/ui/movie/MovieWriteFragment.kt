@@ -43,6 +43,18 @@ class MovieWriteFragment: Fragment() {
         setTodayDate()
         setDatePicker()
         setBtnColorChange()
+
+        binding.ivMovieWritePoster.setOnClickListener {
+            showDialog()
+        }
+    }
+
+    private fun showDialog() {
+        val dialogFragment = MovieNameDialogFragment()
+        dialogFragment.setOnMovieNameEnteredListener { movieName ->
+            binding.etMovieWriteNameField.setText(movieName)
+        }
+        dialogFragment.show(parentFragmentManager, "MovieNameDialog")
     }
 
     private fun setBtnColorChange() {

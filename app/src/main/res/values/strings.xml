@@ -70,5 +70,8 @@
     <string name="description_loading_image">로딩 페이지 이미지</string>
     <string name="description_mypage_point">포인트 받기 이미지</string>
     <string name="description_character_collect">캐릭터 수집 현황 버튼</string>
+    <string name="label_movie_name_dialog_confirm">포스터 불러오기</string>
+    <string name="label_movie_name_dialog_cancel">취소</string>
+    <string name="label_movie_name_dialog_title">영화 제목을 입력해 주세요</string>
 
 </resources>
