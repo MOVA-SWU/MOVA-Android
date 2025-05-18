@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.activityViewModels
 import com.example.mova.databinding.DialogInputMovieNameBinding
 
 class MovieNameDialogFragment: DialogFragment() {
@@ -12,11 +13,7 @@ class MovieNameDialogFragment: DialogFragment() {
     private var _binding: DialogInputMovieNameBinding? = null
     private val binding get() = _binding!!
 
-    private var onMovieNameEntered: ((String) -> Unit)? = null
-
-    fun setOnMovieNameEnteredListener(listener: (String) -> Unit) {
-        this.onMovieNameEntered = listener
-    }
+    private val viewModel: MovieWriteViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,10 +28,11 @@ class MovieNameDialogFragment: DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
         binding.btnDialogConfirm.setOnClickListener {
             val movieName = binding.etDialogMovieName.text.toString().trim()
             if (movieName.isNotEmpty()) {
-                onMovieNameEntered?.invoke(movieName)
+                viewModel.searchMovies(movieName)
                 dismiss()
             } else {
                 binding.etDialogMovieName.error = "영화 제목을 입력하세요."
