@@ -1,4 +1,4 @@
-package com.example.mova.ui.movie
+package com.example.mova.ui.movie.moviewrite
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,16 +8,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class MovieWriteViewModel : ViewModel() {
-    private val repository = MovieWriteRepository()
+class MovieWriteViewModel(
+    private val repository : MovieWriteRepository = MovieWriteRepository()
+) : ViewModel() {
 
-    private val _movieInfo = MutableStateFlow<List<MovieInfo>>(emptyList())
-    val movieInfo = _movieInfo.asStateFlow()
+    private val _movieList = MutableStateFlow<List<MovieInfo>>(emptyList())
+    val movieInfo = _movieList.asStateFlow()
 
     fun searchMovies(query: String) {
         viewModelScope.launch {
-            repository.searchMovies(query)?.let {
-                _movieInfo.value = it
+            repository.searchMovies(query).let {
+                _movieList.value = it
             }
         }
     }

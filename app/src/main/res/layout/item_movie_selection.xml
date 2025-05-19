@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="245dp"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:background="@drawable/background_white_13_stroke">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iv_movie_selection_poster"
+        android:layout_width="79dp"
+        android:layout_height="0dp"
+        android:background="@color/gray_55"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/AppRoundedImage10" />
+
+    <TextView
+        android:id="@+id/tv_movie_selection_name"
+        style="@style/InterSemiBold.Gray500.S12"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="14dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_movie_selection_poster"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="WALL-E" />
+
+    <TextView
+        android:id="@+id/tv_movie_selection_genre"
+        style="@style/InterMedium.Gray500.S10"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="@id/tv_movie_selection_name"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_selection_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_selection_name"
+        tools:text="애니메이션, 가족, SF" />
+
+    <Button
+        android:id="@+id/btn_movie_selection"
+        style="@style/InterMedium.White100.S10"
+        android:layout_width="65dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="17dp"
+        android:background="@drawable/background_primary_60"
+        android:padding="0dp"
+        android:text="@string/label_movie_selection"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_movie_selection_name"
+        app:layout_constraintTop_toBottomOf="@id/tv_movie_selection_genre" />
+</androidx.constraintlayout.widget.ConstraintLayout>

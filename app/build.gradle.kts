@@ -5,6 +5,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.devtools.ksp")
+    id("kotlin-parcelize")
 }
 
 val localPropertiesFile = rootProject.file("local.properties")
@@ -24,6 +25,7 @@ android {
 
         buildConfigField("String", "TMDB_BASE_URL", "\"${properties["TMDB_BASE_URL"]}\"")
         buildConfigField("String", "TMDB_API_KEY", "\"${properties["TMDB_API_KEY"]}\"")
+        buildConfigField("String", "TMDB_POSTER_BASE_URL", "\"${properties["TMDB_POSTER_BASE_URL"]}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

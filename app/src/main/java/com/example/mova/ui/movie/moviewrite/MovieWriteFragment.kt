@@ -1,4 +1,4 @@
-package com.example.mova.ui.movie
+package com.example.mova.ui.movie.moviewrite
 
 import android.os.Bundle
 import android.text.Editable
@@ -7,14 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
 import com.example.mova.databinding.FragmentMovieWriteBinding
 import com.example.mova.ui.extensions.load
 import com.google.android.material.datepicker.MaterialDatePicker
-import kotlinx.coroutines.flow.collectLatest
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -23,8 +20,6 @@ class MovieWriteFragment: Fragment() {
 
     private var _binding: FragmentMovieWriteBinding? = null
     private val binding get() =  _binding!!
-
-    private val viewModel: MovieWriteViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +34,6 @@ class MovieWriteFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setLayout()
-        observeMovieInfo()
     }
 
     private fun setLayout() {
@@ -54,6 +48,7 @@ class MovieWriteFragment: Fragment() {
         binding.ivMovieWritePoster.setOnClickListener {
             showDialog()
         }
+        setMovieInfo()
     }
 
     private fun showDialog() {
@@ -61,16 +56,13 @@ class MovieWriteFragment: Fragment() {
         dialogFragment.show(parentFragmentManager, "MovieNameDialog")
     }
 
-    private fun observeMovieInfo() {
-        lifecycleScope.launchWhenStarted {
-            viewModel.movieInfo.collectLatest { movieList ->
-                if (movieList.isNotEmpty()) {
-                    val firstMovie = movieList.first()
-                    binding.etMovieWriteNameField.setText(firstMovie.title)
-                    val postUrl = "https://image.tmdb.org/t/p/w500${firstMovie.poster_path}"
-                    binding.ivMovieWritePoster.load(postUrl)
-                }
-            }
+    private fun setMovieInfo() {
+        parentFragmentManager.setFragmentResultListener("movieSelection", viewLifecycleOwner) { _, bundle ->
+            val movieTitle = bundle.getString("movieTitle", "")
+            val moviePosterUrl = bundle.getString("moviePosterUrl", "")
+
+            binding.ivMovieWritePoster.load(moviePosterUrl)
+            binding.etMovieWriteNameField.setText(movieTitle)
         }
     }
 

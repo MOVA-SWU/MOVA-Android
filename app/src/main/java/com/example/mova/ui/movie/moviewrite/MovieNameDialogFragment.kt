@@ -1,4 +1,4 @@
-package com.example.mova.ui.movie
+package com.example.mova.ui.movie.moviewrite
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,11 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.example.mova.databinding.DialogInputMovieNameBinding
+import androidx.lifecycle.lifecycleScope
+import com.example.mova.databinding.DialogMovieNameBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MovieNameDialogFragment: DialogFragment() {
 
-    private var _binding: DialogInputMovieNameBinding? = null
+    private var _binding: DialogMovieNameBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: MovieWriteViewModel by activityViewModels()
@@ -20,7 +23,7 @@ class MovieNameDialogFragment: DialogFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogInputMovieNameBinding.inflate(inflater, container, false)
+        _binding = DialogMovieNameBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,11 +32,15 @@ class MovieNameDialogFragment: DialogFragment() {
 
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
+        setLayout()
+    }
+
+    private fun setLayout() {
         binding.btnDialogConfirm.setOnClickListener {
             val movieName = binding.etDialogMovieName.text.toString().trim()
             if (movieName.isNotEmpty()) {
                 viewModel.searchMovies(movieName)
-                dismiss()
+                observeMovieList()
             } else {
                 binding.etDialogMovieName.error = "영화 제목을 입력하세요."
             }
@@ -41,6 +48,17 @@ class MovieNameDialogFragment: DialogFragment() {
 
         binding.btnDialogCancel.setOnClickListener {
             dismiss()
+        }
+    }
+
+    private fun observeMovieList() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.movieInfo.collectLatest { movieList ->
+                if (movieList.isNotEmpty()) {
+                    MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
+                    dismiss()
+                }
+            }
         }
     }
 

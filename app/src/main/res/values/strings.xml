@@ -73,5 +73,7 @@
     <string name="label_movie_name_dialog_confirm">포스터 불러오기</string>
     <string name="label_movie_name_dialog_cancel">취소</string>
     <string name="label_movie_name_dialog_title">영화 제목을 입력해 주세요</string>
+    <string name="label_movie_selection_title">기록할 영화를 선택해 주세요</string>
+    <string name="label_movie_selection">선택</string>
 
 </resources>
