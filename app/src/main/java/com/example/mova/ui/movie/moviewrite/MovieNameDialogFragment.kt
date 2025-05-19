@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mova.databinding.DialogMovieNameBinding
 import kotlinx.coroutines.flow.collectLatest
@@ -53,12 +55,20 @@ class MovieNameDialogFragment: DialogFragment() {
 
     private fun observeMovieList() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.movieInfo.collectLatest { movieList ->
-                if (movieList.isNotEmpty()) {
-                    MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
-                    dismiss()
+//            viewModel.movieInfo.collectLatest { movieList ->
+//                if (movieList.isNotEmpty()) {
+//                    MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
+//                    dismiss()
+//                }
+//            }
+            viewModel.movieInfo
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
+                .collect { movieList ->
+                    if (movieList.isNotEmpty()) {
+                        MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
+                        dismiss()
+                    }
                 }
-            }
         }
     }
 

@@ -40,7 +40,9 @@
             app:destination="@id/navigation_character_collect" />
         <action
             android:id="@+id/action_mypage_to_mission_donation"
-            app:destination="@id/navigation_mission_donation" />
+            app:destination="@id/navigation_mission_donation"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/navigation_mypage"/>
     </fragment>
     <fragment
         android:id="@+id/navigation_movie_detail"

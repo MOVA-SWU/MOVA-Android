@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mova.data.model.response.MovieInfo
 import com.example.mova.databinding.DialogMovieSelectionBinding
@@ -53,9 +55,14 @@ class MovieSelectionDialogFragment: DialogFragment() {
     private fun setAdapter() {
         binding.rvMovieSelection.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.movieInfo.collectLatest { movieList ->
-                adapter.submitList(movieList)
-            }
+//            viewModel.movieInfo.collectLatest { movieList ->
+//                adapter.submitList(movieList)
+//            }
+            viewModel.movieInfo
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
+                .collect { movieList ->
+                    adapter.submitList(movieList)
+                }
         }
     }
 

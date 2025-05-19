@@ -6,7 +6,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object TMDBClient {
+object RetrofitClient {
     private val TMDBokHttpClient by lazy {
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().apply {
@@ -15,12 +15,15 @@ object TMDBClient {
             .build()
     }
 
-    val api: TMDBService by lazy {
+    private val tmdbRetrofit by lazy {
         Retrofit.Builder()
             .baseUrl(BuildConfig.TMDB_BASE_URL)
             .client(TMDBokHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(TMDBService::class.java)
+    }
+
+    val tmdbService: TMDBService by lazy {
+        tmdbRetrofit.create(TMDBService::class.java)
     }
 }
