@@ -40,16 +40,18 @@
             app:destination="@id/navigation_character_collect" />
         <action
             android:id="@+id/action_mypage_to_mission_donation"
-            app:destination="@id/navigation_mission_donation" />
+            app:destination="@id/navigation_mission_donation"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/navigation_mypage"/>
     </fragment>
     <fragment
         android:id="@+id/navigation_movie_detail"
-        android:name="com.example.mova.ui.movie.MovieDetailFragment"
+        android:name="com.example.mova.ui.movie.moviedetail.MovieDetailFragment"
         android:label="영화 상세"
         tools:layout="@layout/fragment_movie_detail" />
     <fragment
         android:id="@+id/navigation_movie_write"
-        android:name="com.example.mova.ui.movie.MovieWriteFragment"
+        android:name="com.example.mova.ui.movie.moviewrite.MovieWriteFragment"
         android:label="영화 기록"
         tools:layout="@layout/fragment_movie_write">
         <action
@@ -58,7 +60,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_ai"
-        android:name="com.example.mova.ui.movie.AiFragment"
+        android:name="com.example.mova.ui.movie.ai.AiFragment"
         android:label="AI 미션"
         tools:layout="@layout/fragment_ai">
         <action
@@ -87,7 +89,7 @@
         tools:layout="@layout/fragment_character_collect" />
     <fragment
         android:id="@+id/navigation_loading"
-        android:name="com.example.mova.ui.movie.LoadingFragment"
+        android:name="com.example.mova.ui.movie.ai.LoadingFragment"
         android:label="LoadingFragment"
         tools:layout="@layout/fragment_loading">
         <action

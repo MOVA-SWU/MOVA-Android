@@ -1,4 +1,4 @@
-package com.example.mova.ui.movie
+package com.example.mova.ui.movie.ai
 
 import android.os.Bundle
 import android.view.LayoutInflater

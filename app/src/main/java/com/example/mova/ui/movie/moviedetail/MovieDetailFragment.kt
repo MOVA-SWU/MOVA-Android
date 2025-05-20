@@ -1,4 +1,4 @@
-package com.example.mova.ui.movie
+package com.example.mova.ui.movie.moviedetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.example.mova.R
-import com.example.mova.databinding.FragmentLoadingBinding
+import com.example.mova.databinding.FragmentMovieDetailBinding
 
-class LoadingFragment : Fragment() {
-
-    private var _binding : FragmentLoadingBinding? = null
+class MovieDetailFragment: Fragment() {
+    private var _binding: FragmentMovieDetailBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -19,7 +17,7 @@ class LoadingFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLoadingBinding.inflate(inflater, container, false)
+        _binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -30,13 +28,11 @@ class LoadingFragment : Fragment() {
     }
 
     private fun setLayout() {
-        binding.btnLoadingBack.setOnClickListener {
+        binding.btnMovieDetailBack.setOnClickListener {
             findNavController().navigateUp()
         }
-        binding.ivLoading.setOnClickListener {
-            findNavController().navigate(R.id.action_loading_to_ai)
-        }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

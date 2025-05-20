@@ -1,4 +1,4 @@
-package com.example.mova.ui.movie
+package com.example.mova.ui.movie.moviewrite
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
 import com.example.mova.databinding.FragmentMovieWriteBinding
+import com.example.mova.ui.extensions.load
 import com.google.android.material.datepicker.MaterialDatePicker
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -43,6 +44,26 @@ class MovieWriteFragment: Fragment() {
         setTodayDate()
         setDatePicker()
         setBtnColorChange()
+
+        binding.ivMovieWritePoster.setOnClickListener {
+            showDialog()
+        }
+        setMovieInfo()
+    }
+
+    private fun showDialog() {
+        val dialogFragment = MovieNameDialogFragment()
+        dialogFragment.show(parentFragmentManager, "MovieNameDialog")
+    }
+
+    private fun setMovieInfo() {
+        parentFragmentManager.setFragmentResultListener("movieSelection", viewLifecycleOwner) { _, bundle ->
+            val movieTitle = bundle.getString("movieTitle", "")
+            val moviePosterUrl = bundle.getString("moviePosterUrl", "")
+
+            binding.ivMovieWritePoster.load(moviePosterUrl)
+            binding.etMovieWriteNameField.setText(movieTitle)
+        }
     }
 
     private fun setBtnColorChange() {
