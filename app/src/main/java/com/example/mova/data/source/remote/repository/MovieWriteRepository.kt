@@ -1,9 +1,9 @@
-package com.example.mova.data.source.repository
+package com.example.mova.data.source.remote.repository
 
 import com.example.mova.BuildConfig
 import com.example.mova.data.model.response.GenreMapper
 import com.example.mova.data.model.response.MovieInfo
-import com.example.mova.data.source.network.TMDBService
+import com.example.mova.data.source.remote.network.TMDBService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 

@@ -1,4 +1,4 @@
-package com.example.mova.data.source.network
+package com.example.mova.data.source.remote.network
 
 import com.example.mova.data.model.response.TMDBResponse
 import retrofit2.http.GET

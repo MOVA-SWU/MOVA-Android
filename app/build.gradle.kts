@@ -26,6 +26,7 @@ android {
         buildConfigField("String", "TMDB_BASE_URL", "\"${properties["TMDB_BASE_URL"]}\"")
         buildConfigField("String", "TMDB_API_KEY", "\"${properties["TMDB_API_KEY"]}\"")
         buildConfigField("String", "TMDB_POSTER_BASE_URL", "\"${properties["TMDB_POSTER_BASE_URL"]}\"")
+        buildConfigField("String", "BASE_URL", "\"${properties["BASE_URL"]}\"")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -87,4 +88,7 @@ dependencies {
 
     // Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    // DataStore
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
 }
