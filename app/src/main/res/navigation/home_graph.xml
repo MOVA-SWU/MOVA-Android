@@ -32,7 +32,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_mypage"
-        android:name="com.example.mova.ui.mypage.MypageFragment"
+        android:name="com.example.mova.ui.mypage.MyPageFragment"
         android:label="@string/label_mypage"
         tools:layout="@layout/fragment_mypage">
         <action

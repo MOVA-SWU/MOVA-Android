@@ -8,7 +8,7 @@ import com.example.mova.data.model.request.SignUpRequest
 import com.example.mova.data.model.response.EmailCheckResponse
 import com.example.mova.data.model.response.LogInResponse
 import com.example.mova.data.model.response.SignUpResponse
-import com.example.mova.data.source.repository.AuthRepository
+import com.example.mova.data.source.remote.repository.AuthRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch

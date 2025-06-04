@@ -1,4 +1,4 @@
-package com.example.mova.data.source.repository
+package com.example.mova.data.source.remote.repository
 
 import com.example.mova.data.model.request.EmailCheckRequest
 import com.example.mova.data.model.request.LogInRequest
@@ -6,7 +6,7 @@ import com.example.mova.data.model.request.SignUpRequest
 import com.example.mova.data.model.response.EmailCheckResponse
 import com.example.mova.data.model.response.LogInResponse
 import com.example.mova.data.model.response.SignUpResponse
-import com.example.mova.data.source.network.RetrofitService
+import com.example.mova.data.source.remote.network.RetrofitService
 
 class AuthRepository(private val retrofitService: RetrofitService) {
     suspend fun postSignUp(request: SignUpRequest): Result<SignUpResponse> {

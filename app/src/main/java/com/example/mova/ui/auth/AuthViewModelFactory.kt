@@ -2,7 +2,7 @@ package com.example.mova.ui.auth
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mova.data.source.repository.AuthRepository
+import com.example.mova.data.source.remote.repository.AuthRepository
 
 class AuthViewModelFactory(
     private val repository: AuthRepository

@@ -88,4 +88,7 @@ dependencies {
 
     // Coroutine
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    // DataStore
+    implementation("androidx.datastore:datastore-preferences:1.1.7")
 }

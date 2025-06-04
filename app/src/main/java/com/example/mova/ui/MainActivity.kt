@@ -1,4 +1,4 @@
-package com.example.mova
+package com.example.mova.ui
 
 import android.os.Bundle
 import android.view.View
@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.mova.R
 import com.example.mova.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -11,11 +11,12 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.mova.MainActivity
+import com.example.mova.ui.MainActivity
 import com.example.mova.R
 import com.example.mova.data.model.request.LogInRequest
-import com.example.mova.data.source.network.RetrofitClient
-import com.example.mova.data.source.repository.AuthRepository
+import com.example.mova.data.source.local.DataStoreManager
+import com.example.mova.data.source.remote.network.RetrofitClient
+import com.example.mova.data.source.remote.repository.AuthRepository
 import com.example.mova.databinding.ActivityLoginBinding
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -28,6 +29,8 @@ class LoginActivity : AppCompatActivity() {
         AuthViewModelFactory(AuthRepository(RetrofitClient.retrofitService))
     }
 
+    private lateinit var dataStoreManager: DataStoreManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
@@ -35,6 +38,8 @@ class LoginActivity : AppCompatActivity() {
 
         setSystemBar()
         setLayout()
+
+        dataStoreManager = DataStoreManager(applicationContext)
     }
 
     private fun setLayout() {
@@ -66,7 +71,14 @@ class LoginActivity : AppCompatActivity() {
                 .collectLatest { result ->
                     result?.let {
                         if (it.isSuccess) {
-                            Toast.makeText(this@LoginActivity, "로그인 성공", Toast.LENGTH_SHORT).show()
+                            val response = it.getOrNull()
+                            response?.let {
+                                lifecycleScope.launch {
+                                    dataStoreManager.saveAccessToken(it.token.accessToken)
+                                    dataStoreManager.saveRefreshToken(it.token.refreshToken)
+                                }
+                            }
+                            // AuthTokenProvider.accessToken = it.getOrNull()?.token?.accessToken
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(intent)
                             finish()
