@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
+import com.example.mova.data.model.request.MovieWriteRequest
 import com.example.mova.databinding.FragmentMovieWriteBinding
 import com.example.mova.ui.extensions.load
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -20,6 +21,8 @@ class MovieWriteFragment: Fragment() {
 
     private var _binding: FragmentMovieWriteBinding? = null
     private val binding get() =  _binding!!
+
+    private var posterUrl: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,6 +64,7 @@ class MovieWriteFragment: Fragment() {
             val movieTitle = bundle.getString("movieTitle", "")
             val moviePosterUrl = bundle.getString("moviePosterUrl", "")
 
+            posterUrl = moviePosterUrl
             binding.ivMovieWritePoster.load(moviePosterUrl)
             binding.etMovieWriteNameField.setText(movieTitle)
         }
@@ -78,7 +82,16 @@ class MovieWriteFragment: Fragment() {
                         setBackgroundResource(R.drawable.background_primary_40)
                         setTextAppearance(R.style.InterMedium_White_S18)
                         setOnClickListener {
-                            findNavController().navigate(R.id.action_movie_write_to_loading)
+                            val request = MovieWriteRequest(
+                                title = binding.etMovieWriteNameField.text.toString(),
+                                rating = binding.ratingbarMovieWriteRating.rating.toDouble(),
+                                dateTime = binding.tvMovieWriteDateField.text.toString(),
+                                content = binding.etMovieWriteContent.text.toString(),
+                                imageUrl = posterUrl ?: ""
+                            )
+
+                            val action = MovieWriteFragmentDirections.actionMovieWriteToLoading(request)
+                            findNavController().navigate(action)
                         }
                     }
                 } else {

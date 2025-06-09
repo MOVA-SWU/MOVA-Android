@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mova.R
-import com.example.mova.data.model.Movie
+import com.example.mova.data.model.response.MovieListResponse
 import com.example.mova.databinding.ItemHomeMovieListBinding
+import com.example.mova.ui.extensions.load
 
-class HomeMovieAdapter(private val clickListener: MovieClickListener) : ListAdapter<Movie, HomeMovieAdapter.HomeMovieViewHolder>(
+class HomeMovieAdapter(private val clickListener: MovieClickListener) : ListAdapter<MovieListResponse, HomeMovieAdapter.HomeMovieViewHolder>(
     MovieDiffCallback()
 ){
 
@@ -24,10 +24,10 @@ class HomeMovieAdapter(private val clickListener: MovieClickListener) : ListAdap
     class HomeMovieViewHolder private constructor(private val binding: ItemHomeMovieListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Movie, clickListener: MovieClickListener) {
-            binding.ivHomeMovieList.setBackgroundResource(R.color.gray_55)
+        fun bind(movie: MovieListResponse, clickListener: MovieClickListener) {
+            binding.ivHomeMovieList.load(movie.imageUrl)
             binding.ivHomeMovieList.setOnClickListener {
-                clickListener.onMovieClick(movie.id.toString())
+                clickListener.onMovieClick(movie)
             }
         }
 
@@ -45,13 +45,13 @@ class HomeMovieAdapter(private val clickListener: MovieClickListener) : ListAdap
     }
 }
 
-class MovieDiffCallback: DiffUtil.ItemCallback<Movie>() {
+class MovieDiffCallback: DiffUtil.ItemCallback<MovieListResponse>() {
 
-    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-        return oldItem.id == newItem.id
+    override fun areItemsTheSame(oldItem: MovieListResponse, newItem: MovieListResponse): Boolean {
+        return oldItem.movieId == newItem.movieId
     }
 
-    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+    override fun areContentsTheSame(oldItem: MovieListResponse, newItem: MovieListResponse): Boolean {
         return oldItem == newItem
     }
 }

@@ -10,7 +10,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mova.databinding.DialogMovieNameBinding
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class MovieNameDialogFragment: DialogFragment() {
@@ -18,7 +17,7 @@ class MovieNameDialogFragment: DialogFragment() {
     private var _binding: DialogMovieNameBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieWriteViewModel by activityViewModels()
+    private val viewModel: MovieSearchViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

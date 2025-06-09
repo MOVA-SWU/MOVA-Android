@@ -48,7 +48,12 @@
         android:id="@+id/navigation_movie_detail"
         android:name="com.example.mova.ui.movie.moviedetail.MovieDetailFragment"
         android:label="영화 상세"
-        tools:layout="@layout/fragment_movie_detail" />
+        tools:layout="@layout/fragment_movie_detail">
+        <argument
+            android:name="movie"
+            app:argType="com.example.mova.data.model.response.MovieListResponse"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_movie_write"
         android:name="com.example.mova.ui.movie.moviewrite.MovieWriteFragment"
@@ -57,12 +62,19 @@
         <action
             android:id="@+id/action_movie_write_to_loading"
             app:destination="@id/navigation_loading" />
+        <action
+            android:id="@+id/action_movie_write_to_ai"
+            app:destination="@id/navigation_ai" />
     </fragment>
     <fragment
         android:id="@+id/navigation_ai"
         android:name="com.example.mova.ui.movie.ai.AiFragment"
         android:label="AI 미션"
         tools:layout="@layout/fragment_ai">
+        <argument
+            android:name="movieWriteResponse"
+            app:argType="com.example.mova.data.model.response.MovieWriteResponse"
+            app:nullable="false" />
         <action
             android:id="@+id/action_ai_to_home"
             app:destination="@id/navigation_home" />
@@ -92,6 +104,10 @@
         android:name="com.example.mova.ui.movie.ai.LoadingFragment"
         android:label="LoadingFragment"
         tools:layout="@layout/fragment_loading">
+        <argument
+            android:name="movieWriteRequest"
+            app:argType="com.example.mova.data.model.request.MovieWriteRequest"
+            app:nullable="false"/>
         <action
             android:id="@+id/action_loading_to_ai"
             app:destination="@id/navigation_ai"

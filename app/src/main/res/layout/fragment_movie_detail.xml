@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white_90">
@@ -39,7 +40,8 @@
             android:layout_marginStart="26dp"
             android:layout_marginTop="53dp"
             android:background="@color/gray_55"
-            app:layout_constraintDimensionRatio="160:223"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintEnd_toStartOf="@id/tv_movie_detail_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_movie_detail_back"
@@ -59,15 +61,15 @@
             app:layout_constraintTop_toTopOf="@id/iv_movie_detail_poster" />
 
         <TextView
-            android:id="@+id/et_movie_detail_name_field"
+            android:id="@+id/tv_movie_detail_name_field"
             style="@style/InterMedium.Gray500.S13"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="WALL-E"
             app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_name"
             app:layout_constraintStart_toStartOf="@id/tv_movie_detail_name"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_name" />
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_name"
+            tools:text="WALL-E" />
 
         <TextView
             android:id="@+id/tv_movie_detail_rating"
@@ -76,9 +78,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/label_movie_rating"
-            app:layout_constraintEnd_toEndOf="@id/et_movie_detail_name_field"
-            app:layout_constraintStart_toStartOf="@id/et_movie_detail_name_field"
-            app:layout_constraintTop_toBottomOf="@id/et_movie_detail_name_field" />
+            app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_name_field"
+            app:layout_constraintStart_toStartOf="@id/tv_movie_detail_name_field"
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_name_field" />
 
         <androidx.appcompat.widget.AppCompatRatingBar
             android:id="@+id/ratingbar_movie_detail_rating"
@@ -112,12 +114,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="2025.03.09"
             app:layout_constraintStart_toStartOf="@id/tv_movie_detail_date"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_date" />
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_date"
+            tools:text="2025.03.09" />
 
         <TextView
-            android:id="@+id/et_movie_detail_content"
+            android:id="@+id/tv_movie_detail_content"
             style="@style/InterMedium.Gray400.S13"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -127,10 +129,10 @@
             android:minHeight="219dp"
             android:paddingHorizontal="25dp"
             android:paddingVertical="22dp"
-            android:text="영화 제목과 동명인 주인공 로봇의 모험과, 그 과정에서 알게모르게 스며들어있는 여러 교훈들은 깊은 울림을 주기에 모자람이 없다."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iv_movie_detail_poster" />
+            app:layout_constraintTop_toBottomOf="@id/iv_movie_detail_poster"
+            tools:text="영화 제목과 동명인 주인공 로봇의 모험과, 그 과정에서 알게모르게 스며들어있는 여러 교훈들은 깊은 울림을 주기에 모자람이 없다." />
 
         <TextView
             android:id="@+id/tv_movie_detail_ai_mission"
@@ -141,23 +143,24 @@
             android:layout_marginTop="32dp"
             android:text="@string/label_mission_ai"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/et_movie_detail_content" />
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_content" />
 
         <TextView
             android:id="@+id/tv_movie_detail_ai_mission_field"
             style="@style/InterSemiBold.Gray500.S14"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="26dp"
             android:layout_marginTop="12dp"
             android:background="@drawable/background_white_13_stroke"
             android:gravity="center_vertical"
-            android:paddingHorizontal="20dp"
-            android:text="나무 20그루 심기"
-            app:layout_constraintDimensionRatio="337:70"
+            android:paddingVertical="30dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="130dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_ai_mission" />
+            app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_ai_mission"
+            tools:text="나무 20그루 심기" />
 
         <Button
             android:id="@+id/btn_movie_detail_point"
@@ -165,14 +168,14 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/background_primary_60"
+            android:background="@drawable/background_gray55_60"
             android:padding="0dp"
-            android:text="100 P"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="@id/tv_movie_detail_ai_mission_field"
             app:layout_constraintDimensionRatio="75:25"
             app:layout_constraintEnd_toEndOf="@id/tv_movie_detail_ai_mission_field"
-            app:layout_constraintTop_toTopOf="@id/tv_movie_detail_ai_mission_field" />
+            app:layout_constraintTop_toTopOf="@id/tv_movie_detail_ai_mission_field"
+            tools:text="100 P" />
 
         <TextView
             android:id="@+id/tv_movie_detail_character"
@@ -192,6 +195,7 @@
             android:layout_marginHorizontal="100dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="84dp"
+            android:alpha="0.5"
             android:background="@color/gray_70"
             android:contentDescription="@string/description_movie_detail_character"
             android:scaleType="fitCenter"
@@ -200,7 +204,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_movie_detail_character" />
+
+        <ImageView
+            android:id="@+id/iv_movie_detail_character_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/description_character_lock"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintBottom_toBottomOf="@id/iv_movie_detail_character"
+            app:layout_constraintEnd_toEndOf="@id/iv_movie_detail_character"
+            app:layout_constraintStart_toStartOf="@id/iv_movie_detail_character"
+            app:layout_constraintTop_toTopOf="@id/iv_movie_detail_character" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </androidx.core.widget.NestedScrollView>

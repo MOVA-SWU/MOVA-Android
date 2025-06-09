@@ -6,12 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.mova.R
 import com.example.mova.databinding.FragmentAiBinding
+import com.example.mova.ui.extensions.load
 
 class AiFragment : Fragment() {
     private var _binding : FragmentAiBinding? = null
     private val binding get() = _binding!!
+
+    private val args: AiFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,6 +39,12 @@ class AiFragment : Fragment() {
         binding.btnAiMissionStart.setOnClickListener {
             findNavController().navigate(R.id.action_ai_to_home)
         }
+
+        val response = args.movieWriteResponse
+        binding.tvAiMissionTitle.text = response.mission
+        binding.tvAiMissionContent.text = response.effect
+        binding.tvAiPoint.text = response.point_message
+        binding.ivAiCharacter.load(response.image_url)
     }
 
     override fun onDestroyView() {

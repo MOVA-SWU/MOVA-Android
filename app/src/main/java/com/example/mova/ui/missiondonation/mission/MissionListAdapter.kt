@@ -27,7 +27,7 @@ class MissionListAdapter(private val clickListener: MovieClickListener) : ListAd
                 binding.tvMissionListTitle.text = mission.missionTitle
                 binding.tvMissionListPoint.text = "${mission.point}포인트 받기"
                 itemView.setOnClickListener {
-                    clickListener.onMovieClick(mission.id.toString())
+                    // clickListener.onMovieClick(mission.id.toString())
                 }
             }
 
