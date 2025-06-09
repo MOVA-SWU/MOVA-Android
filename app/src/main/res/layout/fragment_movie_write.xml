@@ -42,7 +42,7 @@
             android:layout_marginTop="53dp"
             android:scaleType="centerCrop"
             android:background="@drawable/background_poster_add"
-            app:layout_constraintDimensionRatio="160:223"
+            app:layout_constraintDimensionRatio="2:3"
             app:layout_constraintEnd_toStartOf="@id/tv_movie_write_name"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_movie_write_back"

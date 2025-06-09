@@ -6,12 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
-import com.example.mova.data.model.Banner
-import com.example.mova.data.model.Movie
+import com.example.mova.data.model.response.MovieListResponse
+import com.example.mova.data.source.remote.network.RetrofitClient
+import com.example.mova.data.source.remote.repository.HomeRepository
 import com.example.mova.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import kotlin.math.abs
 
 class HomeFragment : Fragment() {
@@ -20,28 +27,22 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val bannerAdapter = HomeBannerAdapter(object: MovieClickListener {
-        override fun onMovieClick(movieId: String) {
-            findNavController().navigate(R.id.action_home_to_movie_detail)
+        override fun onMovieClick(movie: MovieListResponse) {
+            val action = HomeFragmentDirections.actionHomeToMovieDetail(movie = movie)
+            findNavController().navigate(action)
         }
     })
 
     private val movieAdapter = HomeMovieAdapter(object: MovieClickListener {
-        override fun onMovieClick(movieId: String) {
-            findNavController().navigate(R.id.action_home_to_movie_detail)
+        override fun onMovieClick(movie: MovieListResponse) {
+            val action = HomeFragmentDirections.actionHomeToMovieDetail(movie = movie)
+            findNavController().navigate(action)
         }
     })
 
-    val dummyBanners = listOf(
-        Banner(1, "Banner 1", ""),
-        Banner(2, "Banner 2", "")
-    )
-    val dummyBanners2 = listOf(
-        Movie(1, ""),
-        Movie(2, ""),
-        Movie(3, ""),
-        Movie(4, ""),
-        Movie(5, "")
-    )
+    private val viewModel: HomeViewModel by viewModels {
+        HomeViewModelFactory(HomeRepository(RetrofitClient.retrofitService))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -66,7 +67,6 @@ class HomeFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        binding.tvHomeMovieNull.isVisible = dummyBanners.isEmpty() && dummyBanners2.isEmpty()
         setBanners()
         setMovieList()
     }
@@ -86,19 +86,53 @@ class HomeFragment : Fragment() {
                 val offset = position * -(10 * pageOffsetPx + pageMarginPx)
                 page.translationX = offset
                 page.scaleY = 0.9f + (1 - abs(position)) * 0.1f
+                page.translationZ = -abs(position)
             }
 
             TabLayoutMediator(
                 binding.viewpagerHomeBannerIndicator, this) { tab, position ->
             }.attach()
         }
-
-        bannerAdapter.submitList(dummyBanners)
     }
 
     private fun setMovieList() {
         binding.rvHomeMovieList.adapter = movieAdapter
-        movieAdapter.submitList(dummyBanners2)
+        viewModel.loadMovieList()
+        viewModel.loadLatestMovie()
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                var currentMovieList: List<MovieListResponse>? = null
+                var currentBannerList: List<MovieListResponse>? = null
+
+                launch {
+                    viewModel.movieListResponse.collectLatest { result ->
+                        val list = result.getOrNull()
+                        currentMovieList = list
+                        movieAdapter.submitList(list)
+                        updateMovieNullVisibility(currentMovieList, currentBannerList)
+                    }
+                }
+                launch {
+                    viewModel.latestMovieResponse.collectLatest { result ->
+                        val list = result.getOrNull()
+                        currentBannerList = list
+                        bannerAdapter.submitList(list)
+                        updateMovieNullVisibility(currentMovieList, currentBannerList)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun updateMovieNullVisibility(
+        movieList: List<MovieListResponse>?,
+        bannerList: List<MovieListResponse>?
+    ) {
+        val isMovieListEmpty = movieList.isNullOrEmpty()
+        val isBannerListEmpty = bannerList.isNullOrEmpty()
+
+        binding.tvHomeMovieNull.isVisible = isMovieListEmpty && isBannerListEmpty
     }
 
     override fun onDestroyView() {

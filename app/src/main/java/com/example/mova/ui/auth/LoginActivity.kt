@@ -78,7 +78,6 @@ class LoginActivity : AppCompatActivity() {
                                     dataStoreManager.saveRefreshToken(it.token.refreshToken)
                                 }
                             }
-                            // AuthTokenProvider.accessToken = it.getOrNull()?.token?.accessToken
                             val intent = Intent(this@LoginActivity, MainActivity::class.java)
                             startActivity(intent)
                             finish()

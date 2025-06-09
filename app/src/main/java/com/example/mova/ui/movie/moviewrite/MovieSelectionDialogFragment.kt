@@ -12,7 +12,6 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mova.data.model.response.MovieInfo
 import com.example.mova.databinding.DialogMovieSelectionBinding
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class MovieSelectionDialogFragment: DialogFragment() {
@@ -20,7 +19,7 @@ class MovieSelectionDialogFragment: DialogFragment() {
     private var _binding: DialogMovieSelectionBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieWriteViewModel by activityViewModels()
+    private val viewModel: MovieSearchViewModel by activityViewModels()
 
     private val adapter = MovieSelectionAdapter(object : MovieClickListener {
         override fun onMovieClick(movie: MovieInfo) {

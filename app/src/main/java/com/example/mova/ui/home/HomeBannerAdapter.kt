@@ -5,11 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mova.R
-import com.example.mova.data.model.Banner
+import com.example.mova.data.model.response.MovieListResponse
 import com.example.mova.databinding.ItemHomeBannerBinding
+import com.example.mova.ui.extensions.load
 
-class HomeBannerAdapter(private val clickListener: MovieClickListener) : ListAdapter<Banner, HomeBannerAdapter.HomeMovieViewHolder>(
+class HomeBannerAdapter(private val clickListener: MovieClickListener) : ListAdapter<MovieListResponse, HomeBannerAdapter.HomeMovieViewHolder>(
     BannerDiffCallback()
 ){
 
@@ -24,10 +24,10 @@ class HomeBannerAdapter(private val clickListener: MovieClickListener) : ListAda
     class HomeMovieViewHolder private constructor(private val binding: ItemHomeBannerBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(banner: Banner, clickListener: MovieClickListener) {
-            binding.ivBannerImage.setBackgroundResource(R.color.gray_55)
+        fun bind(movie: MovieListResponse, clickListener: MovieClickListener) {
+            binding.ivBannerImage.load(movie.imageUrl)
             binding.ivBannerImage.setOnClickListener {
-                clickListener.onMovieClick(banner.id.toString())
+                clickListener.onMovieClick(movie)
             }
         }
 
@@ -45,13 +45,13 @@ class HomeBannerAdapter(private val clickListener: MovieClickListener) : ListAda
     }
 }
 
-class BannerDiffCallback: DiffUtil.ItemCallback<Banner>() {
+class BannerDiffCallback: DiffUtil.ItemCallback<MovieListResponse>() {
 
-    override fun areItemsTheSame(oldItem: Banner, newItem: Banner): Boolean {
-        return oldItem.id == newItem.id
+    override fun areItemsTheSame(oldItem: MovieListResponse, newItem: MovieListResponse): Boolean {
+        return oldItem.movieId == newItem.movieId
     }
 
-    override fun areContentsTheSame(oldItem: Banner, newItem: Banner): Boolean {
+    override fun areContentsTheSame(oldItem: MovieListResponse, newItem: MovieListResponse): Boolean {
         return oldItem == newItem
     }
 }

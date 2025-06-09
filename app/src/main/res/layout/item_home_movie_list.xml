@@ -12,7 +12,7 @@
         android:background="@color/gray_55"
         android:paddingBottom="20dp"
         android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="160:198"
+        app:layout_constraintDimensionRatio="2:3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
