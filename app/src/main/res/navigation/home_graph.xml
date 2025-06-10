@@ -11,11 +11,12 @@
         android:label="@string/label_mission_donation"
         tools:layout="@layout/fragment_mission_donation">
         <action
+            android:id="@+id/action_mission_to_movie_detail"
+            app:destination="@id/navigation_movie_detail"
+            app:launchSingleTop="true" />
+        <action
             android:id="@+id/action_donation_to_company_detail"
             app:destination="@id/navigation_company_detail" />
-        <action
-            android:id="@+id/action_mission_to_movie_detail"
-            app:destination="@id/navigation_movie_detail" />
     </fragment>
 
     <fragment
@@ -52,6 +53,10 @@
         <argument
             android:name="movie"
             app:argType="com.example.mova.data.model.response.MovieListResponse"
+            app:nullable="true" />
+        <argument
+            android:name="mission"
+            app:argType="com.example.mova.data.model.response.MissionListResponse"
             app:nullable="true" />
     </fragment>
     <fragment

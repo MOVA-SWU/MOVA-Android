@@ -28,14 +28,14 @@ class HomeFragment : Fragment() {
 
     private val bannerAdapter = HomeBannerAdapter(object: MovieClickListener {
         override fun onMovieClick(movie: MovieListResponse) {
-            val action = HomeFragmentDirections.actionHomeToMovieDetail(movie = movie)
+            val action = HomeFragmentDirections.actionHomeToMovieDetail(movie = movie, null)
             findNavController().navigate(action)
         }
     })
 
     private val movieAdapter = HomeMovieAdapter(object: MovieClickListener {
         override fun onMovieClick(movie: MovieListResponse) {
-            val action = HomeFragmentDirections.actionHomeToMovieDetail(movie = movie)
+            val action = HomeFragmentDirections.actionHomeToMovieDetail(movie = movie, null)
             findNavController().navigate(action)
         }
     })

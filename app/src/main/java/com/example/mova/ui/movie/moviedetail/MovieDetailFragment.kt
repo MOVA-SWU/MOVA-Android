@@ -1,6 +1,7 @@
 package com.example.mova.ui.movie.moviedetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,6 +33,7 @@ class MovieDetailFragment: Fragment() {
     }
 
     private var missionId: Int? = null
+    private var movieId: Int? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -59,7 +61,7 @@ class MovieDetailFragment: Fragment() {
     }
 
     private fun setViewModel() {
-        val movieId = args.movie?.movieId
+        movieId = args.movie?.movieId ?: args.mission?.movieRecordId
         movieId?.let {
             viewModel.loadMovieDetail(it)
             viewModel.loadMissionDetail(it)
@@ -120,11 +122,8 @@ class MovieDetailFragment: Fragment() {
     }
 
     private fun patchMissionComplete() {
-        val movieId = args.movie?.movieId
-        movieId?.let { movieId ->
-            missionId?.let { missionId ->
-                viewModel.missionComplete(movieId, missionId)
-            }
+        if (movieId != null && missionId != null) {
+            viewModel.missionComplete(movieId!!, missionId!!)
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
