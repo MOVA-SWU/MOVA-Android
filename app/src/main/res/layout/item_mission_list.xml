@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="15dp">
 
     <View
@@ -10,9 +11,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/background_white100_16"
-        app:layout_constraintDimensionRatio="326:72"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:layout_marginBottom="3dp"
-        android:text="잔디 청소하고"
+        tools:text="잔디 청소하고"
+        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toTopOf="@id/tv_mission_list_point"
         app:layout_constraintEnd_toStartOf="@id/btn_mission_list"
         app:layout_constraintStart_toStartOf="@id/view_mission_list"
@@ -35,7 +37,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:text="50포인트 받기"
+        tools:text="50포인트 받기"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="@id/view_mission_list"
         app:layout_constraintEnd_toEndOf="@id/tv_mission_list_title"
         app:layout_constraintStart_toStartOf="@id/tv_mission_list_title"

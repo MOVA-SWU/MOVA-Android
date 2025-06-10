@@ -1,47 +1,44 @@
 package com.example.mova.ui.missiondonation.mission
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.example.mova.R
-import com.example.mova.data.model.Mission
+import com.example.mova.data.model.response.MissionListResponse
+import com.example.mova.data.source.remote.network.RetrofitClient
+import com.example.mova.data.source.remote.repository.MissionRepository
 import com.example.mova.databinding.FragmentMissionBinding
-import com.example.mova.ui.home.MovieClickListener
+import com.example.mova.ui.missiondonation.MissionDonationFragmentDirections
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MissionFragment : Fragment() {
 
     private var  _binding: FragmentMissionBinding? = null
     private val binding get() = _binding!!
 
-    private val missionAdapter = MissionListAdapter(object: MovieClickListener {
-        override fun onMovieClick(movieId: String) {
+    private val missionAdapter = MissionListAdapter(object: MissionClickListener {
+        override fun onMissionClick(mission: MissionListResponse) {
+            val action = MissionDonationFragmentDirections.actionMissionToMovieDetail(null, mission = mission)
             (requireActivity() as AppCompatActivity)
-                .findNavController(R.id.container_home).navigate(R.id.action_mission_to_movie_detail)
+                .findNavController(R.id.container_home)
+                .navigate(action)
         }
     })
 
-    val dummyMissions = listOf(
-        Mission(1, "잔디 청소하고", 50),
-        Mission(2, "달나라 쓰레기 줍고", 20),
-        Mission(3, "흙 치우기하고", 300),
-        Mission(4, "꽃 심어주고", 20),
-        Mission(5, "수영장 청소하고", 50),
-        Mission(6, "수영장 청소하고", 50),
-        Mission(7, "수영장 청소하고", 50),
-        Mission(8, "수영장 청소하고", 50),
-        Mission(9, "수영장 청소하고", 50)
-    )
-
-    val dummyMissions2 = listOf(
-        Mission(1, "길거리 쓰레기 줍고", 50),
-        Mission(2, "부모님과 대화하고", 20)
-    )
+    private val viewModel: MissionViewModel by viewModels {
+        MissionViewModelFactory(MissionRepository(RetrofitClient.retrofitService))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -64,25 +61,64 @@ class MissionFragment : Fragment() {
     }
 
     private fun setAdapter() {
-        binding.tvMissionListNull.isVisible = dummyMissions.isEmpty()
         binding.rvMissionList.adapter = missionAdapter
-        missionAdapter.submitList(dummyMissions)
+        observeMissionList()
+        viewModel.loadMissionAvailableList()
     }
 
     private fun setRadioButton() {
         binding.btnRadioMission.setOnCheckedChangeListener { _, checkedId ->
-            val missionList = if (checkedId == R.id.btn_radio_possible) {
-                dummyMissions
+            if (checkedId == R.id.btn_radio_possible) {
+                missionAdapter.isAvailableMode = true
+                viewModel.loadMissionAvailableList()
             } else {
-                dummyMissions2
+                missionAdapter.isAvailableMode = false
+                viewModel.loadMissionCompleteList()
             }
+        }
+    }
 
-            missionAdapter.submitList(missionList)
+    private fun observeMissionList() {
+        viewModel.loadPointSum()
 
-            binding.tvMissionListNull.isVisible =
-                (checkedId == R.id.btn_radio_possible && missionList.isEmpty())
-            binding.tvMissionListCompleteNull.isVisible =
-                (checkedId == R.id.btn_radio_impossible && missionList.isEmpty())
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.missionListResponse.collectLatest { result ->
+                        val list = result.getOrNull()
+                        missionAdapter.submitList(list)
+
+                        if (binding.btnRadioPossible.isChecked) {
+                            if (list.isNullOrEmpty()) {
+                                binding.tvMissionListNull.visibility = View.VISIBLE
+                                binding.rvMissionList.visibility = View.GONE
+                            } else {
+                                binding.tvMissionListNull.visibility = View.GONE
+                                binding.rvMissionList.visibility = View.VISIBLE
+                            }
+                        } else {
+                            if (list.isNullOrEmpty()) {
+                                binding.tvMissionListCompleteNull.visibility = View.VISIBLE
+                                binding.rvMissionList.visibility = View.GONE
+                            } else {
+                                binding.tvMissionListCompleteNull.visibility = View.GONE
+                                binding.rvMissionList.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                }
+                launch {
+                    viewModel.pointSumResponse.collectLatest { result ->
+                        result?.let {
+                            if (it.isSuccess) {
+                                binding.tvMissionPointField.text = "${it.getOrNull()?.totalPoints} P"
+                            } else {
+                                Toast.makeText(context, "포인트 실패", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
