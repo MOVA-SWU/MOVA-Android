@@ -76,5 +76,7 @@
     <string name="label_movie_selection_title">기록할 영화를 선택해 주세요</string>
     <string name="label_movie_selection">선택</string>
     <string name="description_character_lock">캐릭터 잠금</string>
+    <string name="label_dialog_nickname_title">변경할 닉네임을 입력해 주세요</string>
+    <string name="label_dialog_nickname_change">변경하기</string>
 
 </resources>

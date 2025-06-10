@@ -54,12 +54,6 @@ class MovieNameDialogFragment: DialogFragment() {
 
     private fun observeMovieList() {
         viewLifecycleOwner.lifecycleScope.launch {
-//            viewModel.movieInfo.collectLatest { movieList ->
-//                if (movieList.isNotEmpty()) {
-//                    MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
-//                    dismiss()
-//                }
-//            }
             viewModel.movieInfo
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
                 .collect { movieList ->

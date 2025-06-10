@@ -54,9 +54,6 @@ class MovieSelectionDialogFragment: DialogFragment() {
     private fun setAdapter() {
         binding.rvMovieSelection.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
-//            viewModel.movieInfo.collectLatest { movieList ->
-//                adapter.submitList(movieList)
-//            }
             viewModel.movieInfo
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
                 .collect { movieList ->

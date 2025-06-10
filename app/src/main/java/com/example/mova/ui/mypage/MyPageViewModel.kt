@@ -2,6 +2,8 @@ package com.example.mova.ui.mypage
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mova.data.model.response.CharacterCollectResponse
+import com.example.mova.data.model.response.PointSumResponse
 import com.example.mova.data.model.response.ProfileResponse
 import com.example.mova.data.source.remote.repository.MyPageRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,6 +16,15 @@ class MyPageViewModel(private val repository: MyPageRepository): ViewModel() {
 
     private val _logoutResponse = MutableStateFlow<Result<Unit>?>(null)
     val logoutResponse = _logoutResponse.asStateFlow()
+
+    private val _pointSumResponse = MutableStateFlow<Result<PointSumResponse>?>(null)
+    val pointSumResponse = _pointSumResponse.asStateFlow()
+
+    private val _nicknameResponse = MutableStateFlow<Result<Unit>?>(null)
+    val nicknameResponse = _nicknameResponse.asStateFlow()
+
+    private val _characterCollectResponse = MutableStateFlow<Result<CharacterCollectResponse>?>(null)
+    val characterCollectResponse = _characterCollectResponse.asStateFlow()
 
     fun loadProfile() {
         viewModelScope.launch {
@@ -33,5 +44,28 @@ class MyPageViewModel(private val repository: MyPageRepository): ViewModel() {
 
     fun clearLogout() {
         _logoutResponse.value = null
+    }
+
+    fun loadPointSum() {
+        viewModelScope.launch {
+            _pointSumResponse.value = repository.getPointSum()
+        }
+    }
+
+    fun changeNickname(nickname: String) {
+        viewModelScope.launch {
+            val result = repository.patchNickname(nickname)
+            _nicknameResponse.value = result
+
+            if (result.isSuccess) {
+                loadProfile()
+            }
+        }
+    }
+
+    fun loadCharacterCollect() {
+        viewModelScope.launch {
+            _characterCollectResponse.value = repository.getCharacterCollect()
+        }
     }
 }

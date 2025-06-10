@@ -6,43 +6,45 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mova.R
-import com.example.mova.data.model.Character
 import com.example.mova.databinding.ItemCharacterCollectBinding
+import com.example.mova.ui.extensions.load
 
-class CharacterCollectAdapter : ListAdapter<Character, CharacterCollectAdapter.CharacterCollectViewHolder>(
+class CharacterCollectAdapter : ListAdapter<String, CharacterCollectAdapter.CharacterCollectViewHolder>(
     CharacterCollectDiffCallback()
 ) {
-    private var actualItem: List<Character> = emptyList()
+    // private var actualItem: List<String> = emptyList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterCollectViewHolder {
         return CharacterCollectViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: CharacterCollectViewHolder, position: Int) {
-        if (position < actualItem.size) {
-            holder.bind(getItem(position), isPlaceholder = false)
-        } else {
-            holder.bind(null, isPlaceholder = true)
+        val item = getItem(position)
+        val isPlaceholder = item == null
+        holder.bind(item, isPlaceholder)
+    }
+
+//    override fun getItemCount(): Int {
+//        return 9
+//    }
+
+    fun submitWithPlaceholders(item: List<String>) {
+        val fixedList = MutableList<String?>(9) { null }
+        for (i in item.indices) {
+            fixedList[i] = item[i]
         }
-    }
-
-    override fun getItemCount(): Int {
-        return maxOf(9, super.getItemCount())
-    }
-
-    fun submitWithPlaceholders(item: List<Character>) {
-        actualItem = item
-        submitList(item)
+        submitList(fixedList)
     }
 
     class CharacterCollectViewHolder private constructor(private val binding: ItemCharacterCollectBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(character: Character?, isPlaceholder: Boolean) {
+        fun bind(character: String?, isPlaceholder: Boolean) {
             if (isPlaceholder) {
-                binding.ivCharacterCollect.setBackgroundResource(R.color.white_100)
-            } else if (character != null) {
                 binding.ivCharacterCollect.setBackgroundResource(R.color.gray_55)
+                binding.ivCharacterCollect.setImageDrawable(null)
+            } else if (character != null) {
+                binding.ivCharacterCollect.load(character)
             }
         }
 
@@ -61,12 +63,12 @@ class CharacterCollectAdapter : ListAdapter<Character, CharacterCollectAdapter.C
     }
 }
 
-class CharacterCollectDiffCallback: DiffUtil.ItemCallback<Character>() {
-    override fun areItemsTheSame(oldItem: Character, newItem: Character): Boolean {
-        return oldItem.id == newItem.id
+class CharacterCollectDiffCallback: DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
     }
 
-    override fun areContentsTheSame(oldItem: Character, newItem: Character): Boolean {
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 

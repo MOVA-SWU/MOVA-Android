@@ -6,6 +6,11 @@ import com.example.mova.data.model.request.MissionCompleteRequest
 import com.example.mova.data.model.request.MovieWriteRequest
 import com.example.mova.data.model.request.RefreshTokenRequest
 import com.example.mova.data.model.request.SignUpRequest
+import com.example.mova.data.model.response.CompanyDetailResponse
+import com.example.mova.data.model.response.CompanyListResponse
+import com.example.mova.data.model.request.DonationCompleteRequest
+import com.example.mova.data.model.request.NicknameRequest
+import com.example.mova.data.model.response.CharacterCollectResponse
 import com.example.mova.data.model.response.EmailCheckResponse
 import com.example.mova.data.model.response.LogInResponse
 import com.example.mova.data.model.response.MissionListResponse
@@ -22,6 +27,7 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -90,6 +96,28 @@ interface RetrofitService {
     @GET("/pointSum")
     suspend fun getPointSum(): PointSumResponse
 
+    @GET("/companies")
+    suspend fun getCompanyList(): List<CompanyListResponse>
+
+    @GET("/companies/{companyId}")
+    suspend fun getCompanyDetail(
+        @Path("companyId") companyId: Int
+    ): CompanyDetailResponse
+
+    @PUT("/companies/{companyId}/sponsor")
+    suspend fun putDonationComplete(
+        @Path("companyId") companyId: Int,
+        @Body status: DonationCompleteRequest
+    ): Response<Unit>
+
     @GET("/myPage")
     suspend fun getProfile(): ProfileResponse
+
+    @PATCH("/myPage/nickname")
+    suspend fun patchNickname(
+        @Body nicknameRequest: NicknameRequest
+    ): Response<Unit>
+
+    @GET("/myPage/collection-status")
+    suspend fun getCharacterCollect(): CharacterCollectResponse
 }

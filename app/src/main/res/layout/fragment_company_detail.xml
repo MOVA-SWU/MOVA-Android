@@ -55,7 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="30dp"
-            android:text="월트디즈니컴퍼니코리아 유한책임회사"
+            tools:text="월트디즈니컴퍼니코리아 유한책임회사"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_company_detail" />
@@ -68,7 +68,7 @@
             android:layout_marginHorizontal="30dp"
             android:layout_marginTop="12dp"
             android:lineSpacingExtra="5dp"
-            android:text="디즈니컴퍼니코리아 유한책임회사는 월트디즈니컴퍼니디즈니 코리아 유한책임회사는 월트디즈니컴퍼니코리아 유한책임회사 사는월트디즈니컴퍼니코리아 유한책임회사는 사는월트디즈니컴퍼니코리아 유한책임회사는"
+            tools:text="디즈니컴퍼니코리아 유한책임회사는 월트디즈니컴퍼니디즈니 코리아 유한책임회사는 월트디즈니컴퍼니코리아 유한책임회사 사는월트디즈니컴퍼니코리아 유한책임회사는 사는월트디즈니컴퍼니코리아 유한책임회사는"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_company_detail_name" />
@@ -108,7 +108,7 @@
             android:layout_marginTop="135dp"
             android:layout_marginBottom="68dp"
             android:background="@drawable/background_primary_40"
-            android:text="@string/label_donate"
+            tools:text="@string/label_donate"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

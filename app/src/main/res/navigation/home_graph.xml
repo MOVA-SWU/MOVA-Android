@@ -98,12 +98,23 @@
         android:id="@+id/navigation_company_detail"
         android:name="com.example.mova.ui.missiondonation.donation.CompanyDetailFragment"
         android:label="제작사 상세"
-        tools:layout="@layout/fragment_company_detail" />
+        tools:layout="@layout/fragment_company_detail">
+        <argument
+            android:name="company"
+            app:argType="com.example.mova.data.model.response.CompanyListResponse"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_character_collect"
         android:name="com.example.mova.ui.mypage.CharacterCollectFragment"
         android:label="캐릭터 수집 현황"
-        tools:layout="@layout/fragment_character_collect" />
+        tools:layout="@layout/fragment_character_collect" >
+        <action
+            android:id="@+id/action_character_collect_to_mission_donation"
+            app:destination="@id/navigation_mission_donation"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/navigation_mypage" />
+    </fragment>
     <fragment
         android:id="@+id/navigation_loading"
         android:name="com.example.mova.ui.movie.ai.LoadingFragment"

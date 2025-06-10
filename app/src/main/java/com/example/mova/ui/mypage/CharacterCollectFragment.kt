@@ -4,10 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import com.example.mova.data.model.Character
+import com.example.mova.R
+import com.example.mova.data.source.remote.network.RetrofitClient
+import com.example.mova.data.source.remote.repository.MyPageRepository
 import com.example.mova.databinding.FragmentCharacterCollectBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class CharacterCollectFragment : Fragment() {
 
@@ -16,13 +25,9 @@ class CharacterCollectFragment : Fragment() {
 
     private val characterCollectAdapter = CharacterCollectAdapter()
 
-    val dummyCharacter = listOf(
-        Character(1, ""),
-        Character(2, ""),
-        Character(3, ""),
-        Character(4, ""),
-        Character(5, "")
-    )
+    private val viewModel: MyPageViewModel by viewModels {
+        MyPageViewModelFactory(MyPageRepository(RetrofitClient.retrofitService))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,19 +42,42 @@ class CharacterCollectFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setLayout()
-
     }
 
     private fun setLayout() {
         binding.btnCharacterCollectBack.setOnClickListener {
             findNavController().navigateUp()
         }
+        binding.btnCharacterCollectAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_character_collect_to_mission_donation)
+        }
+        viewModel.loadCharacterCollect()
         setAdapter()
     }
 
     private fun setAdapter() {
         binding.rvCharacterCollect.adapter = characterCollectAdapter
-        characterCollectAdapter.submitWithPlaceholders(dummyCharacter)
+        setViewModel()
+    }
+
+    private fun setViewModel() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.characterCollectResponse
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
+                .collectLatest { result ->
+                    result?.let {
+                        if (it.isSuccess) {
+                            val response = it.getOrNull()
+                            if (response != null) {
+                                binding.tvCharacterCollectField.text = "${response.imageCount}개"
+                                characterCollectAdapter.submitWithPlaceholders(response.imageUrls)
+                            }
+                        } else {
+                            Toast.makeText(context, "캐릭터 수집 불러오기 실패", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+        }
     }
 
     override fun onDestroyView() {

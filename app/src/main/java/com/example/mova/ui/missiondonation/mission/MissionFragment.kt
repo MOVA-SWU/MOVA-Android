@@ -1,7 +1,6 @@
 package com.example.mova.ui.missiondonation.mission
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -90,18 +89,22 @@ class MissionFragment : Fragment() {
 
                         if (binding.btnRadioPossible.isChecked) {
                             if (list.isNullOrEmpty()) {
+                                binding.tvMissionListCompleteNull.visibility = View.GONE
                                 binding.tvMissionListNull.visibility = View.VISIBLE
                                 binding.rvMissionList.visibility = View.GONE
                             } else {
+                                binding.tvMissionListCompleteNull.visibility = View.GONE
                                 binding.tvMissionListNull.visibility = View.GONE
                                 binding.rvMissionList.visibility = View.VISIBLE
                             }
                         } else {
                             if (list.isNullOrEmpty()) {
                                 binding.tvMissionListCompleteNull.visibility = View.VISIBLE
+                                binding.tvMissionListNull.visibility = View.GONE
                                 binding.rvMissionList.visibility = View.GONE
                             } else {
                                 binding.tvMissionListCompleteNull.visibility = View.GONE
+                                binding.tvMissionListNull.visibility = View.GONE
                                 binding.rvMissionList.visibility = View.VISIBLE
                             }
                         }

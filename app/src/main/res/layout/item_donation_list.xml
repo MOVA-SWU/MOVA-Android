@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="15dp">
 
     <View
@@ -21,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:text="롯데컬처웍스(주)"
+        tools:text="롯데컬처웍스(주)"
         app:layout_constraintBottom_toBottomOf="@id/view_donation_list"
         app:layout_constraintEnd_toStartOf="@id/btn_donation"
         app:layout_constraintStart_toStartOf="@id/view_donation_list"
