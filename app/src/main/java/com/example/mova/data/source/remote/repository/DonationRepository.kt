@@ -4,8 +4,9 @@ import com.example.mova.data.model.response.CompanyDetailResponse
 import com.example.mova.data.model.response.CompanyListResponse
 import com.example.mova.data.model.request.DonationCompleteRequest
 import com.example.mova.data.source.remote.network.RetrofitService
+import javax.inject.Inject
 
-class DonationRepository(private val retrofitService: RetrofitService) {
+class DonationRepository @Inject constructor(private val retrofitService: RetrofitService) {
     suspend fun getCompanyList(): Result<List<CompanyListResponse>> {
         return try {
             val response = retrofitService.getCompanyList()

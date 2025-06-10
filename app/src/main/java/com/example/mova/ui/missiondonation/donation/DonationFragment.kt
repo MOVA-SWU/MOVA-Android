@@ -13,13 +13,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.example.mova.R
 import com.example.mova.data.model.response.CompanyListResponse
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.DonationRepository
 import com.example.mova.databinding.FragmentDonationBinding
 import com.example.mova.ui.missiondonation.MissionDonationFragmentDirections
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class DonationFragment : Fragment() {
 
     private var  _binding: FragmentDonationBinding? = null
@@ -34,9 +34,7 @@ class DonationFragment : Fragment() {
         }
     })
 
-    private val viewModel: DonationViewModel by viewModels {
-        DonationViewModelFactory(DonationRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: DonationViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

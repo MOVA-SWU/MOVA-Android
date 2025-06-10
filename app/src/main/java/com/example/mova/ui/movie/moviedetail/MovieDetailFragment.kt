@@ -14,22 +14,20 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mova.R
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.MovieDetailRepository
 import com.example.mova.databinding.FragmentMovieDetailBinding
 import com.example.mova.ui.extensions.load
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieDetailFragment: Fragment() {
     private var _binding: FragmentMovieDetailBinding? = null
     private val binding get() = _binding!!
 
     private val args: MovieDetailFragmentArgs by navArgs()
 
-    private val viewModel: MovieDetailViewModel by viewModels {
-        MovieDetailViewModelFactory(MovieDetailRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: MovieDetailViewModel by viewModels()
 
     private var missionId: Int? = null
     private var movieId: Int? = null

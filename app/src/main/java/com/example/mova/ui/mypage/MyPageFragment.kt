@@ -15,22 +15,20 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
 import com.example.mova.data.source.local.DataStoreManager
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.MyPageRepository
 import com.example.mova.databinding.FragmentMypageBinding
 import com.example.mova.ui.auth.LoginActivity
 import com.example.mova.ui.extensions.load
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MyPageFragment : Fragment() {
 
     private var _binding: FragmentMypageBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MyPageViewModel by activityViewModels {
-        MyPageViewModelFactory(MyPageRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: MyPageViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

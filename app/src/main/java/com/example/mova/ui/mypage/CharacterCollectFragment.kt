@@ -12,12 +12,12 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.MyPageRepository
 import com.example.mova.databinding.FragmentCharacterCollectBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class CharacterCollectFragment : Fragment() {
 
     private var _binding: FragmentCharacterCollectBinding? = null
@@ -25,9 +25,7 @@ class CharacterCollectFragment : Fragment() {
 
     private val characterCollectAdapter = CharacterCollectAdapter()
 
-    private val viewModel: MyPageViewModel by viewModels {
-        MyPageViewModelFactory(MyPageRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: MyPageViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

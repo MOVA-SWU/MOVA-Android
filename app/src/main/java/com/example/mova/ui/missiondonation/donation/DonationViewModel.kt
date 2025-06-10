@@ -5,11 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.mova.data.model.response.CompanyDetailResponse
 import com.example.mova.data.model.response.CompanyListResponse
 import com.example.mova.data.source.remote.repository.DonationRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DonationViewModel(private val repository: DonationRepository): ViewModel() {
+@HiltViewModel
+class DonationViewModel @Inject constructor(private val repository: DonationRepository): ViewModel() {
     private val _companyListResponse = MutableStateFlow(Result.success(emptyList<CompanyListResponse>()))
     val companyListResponse = _companyListResponse.asStateFlow()
 

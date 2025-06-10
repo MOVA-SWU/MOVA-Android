@@ -12,8 +12,10 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mova.data.model.response.MovieInfo
 import com.example.mova.databinding.DialogMovieSelectionBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieSelectionDialogFragment: DialogFragment() {
 
     private var _binding: DialogMovieSelectionBinding? = null

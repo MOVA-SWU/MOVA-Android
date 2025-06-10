@@ -5,11 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.mova.data.model.request.MovieWriteRequest
 import com.example.mova.data.model.response.MovieWriteResponse
 import com.example.mova.data.source.remote.repository.MovieWriteRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MovieWriteViewModel(private val repository: MovieWriteRepository): ViewModel() {
+@HiltViewModel
+class MovieWriteViewModel @Inject constructor(private val repository: MovieWriteRepository): ViewModel() {
     private val _movieWriteResponse = MutableStateFlow<Result<MovieWriteResponse>?>(null)
     val movieWriteResponse = _movieWriteResponse.asStateFlow()
 

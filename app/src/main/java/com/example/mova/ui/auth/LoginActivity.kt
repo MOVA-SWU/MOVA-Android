@@ -11,24 +11,20 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.mova.ui.MainActivity
 import com.example.mova.R
 import com.example.mova.data.model.request.LogInRequest
 import com.example.mova.data.source.local.DataStoreManager
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.AuthRepository
 import com.example.mova.databinding.ActivityLoginBinding
+import com.example.mova.ui.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
-
-    private val viewModel: AuthViewModel by viewModels {
-        AuthViewModelFactory(AuthRepository(RetrofitClient.retrofitService))
-    }
-
+    private val viewModel: AuthViewModel by viewModels()
     private lateinit var dataStoreManager: DataStoreManager
 
     override fun onCreate(savedInstanceState: Bundle?) {

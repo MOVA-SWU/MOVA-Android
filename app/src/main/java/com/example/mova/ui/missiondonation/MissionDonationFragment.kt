@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import com.example.mova.databinding.FragmentMissionDonationBinding
 import com.example.mova.ui.extensions.dp
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MissionDonationFragment : Fragment() {
 
     private var _binding: FragmentMissionDonationBinding? = null

@@ -5,8 +5,9 @@ import com.example.mova.data.model.response.CharacterCollectResponse
 import com.example.mova.data.model.response.PointSumResponse
 import com.example.mova.data.model.response.ProfileResponse
 import com.example.mova.data.source.remote.network.RetrofitService
+import javax.inject.Inject
 
-class MyPageRepository(private val retrofitService: RetrofitService) {
+class MyPageRepository @Inject constructor(private val retrofitService: RetrofitService) {
     suspend fun getProfile(): Result<ProfileResponse> {
         return try {
             val response = retrofitService.getProfile()

@@ -6,8 +6,9 @@ import com.example.mova.data.model.response.MovieInfo
 import com.example.mova.data.source.remote.network.TMDBService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MovieSearchRepository(private val tmdbService: TMDBService) {
+class MovieSearchRepository @Inject constructor(private val tmdbService: TMDBService) {
     suspend fun searchMovies(query: String): List<MovieInfo> {
         return withContext(Dispatchers.IO) {
             try {

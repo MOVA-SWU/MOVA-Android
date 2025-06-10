@@ -13,10 +13,12 @@ import com.example.mova.data.model.request.MovieWriteRequest
 import com.example.mova.databinding.FragmentMovieWriteBinding
 import com.example.mova.ui.extensions.load
 import com.google.android.material.datepicker.MaterialDatePicker
+import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+@AndroidEntryPoint
 class MovieWriteFragment: Fragment() {
 
     private var _binding: FragmentMovieWriteBinding? = null

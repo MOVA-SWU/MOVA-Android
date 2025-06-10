@@ -15,8 +15,10 @@ import com.example.mova.R
 import com.example.mova.data.source.local.DataStoreManager
 import com.example.mova.databinding.ActivitySplashBinding
 import com.example.mova.ui.auth.LoginActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 

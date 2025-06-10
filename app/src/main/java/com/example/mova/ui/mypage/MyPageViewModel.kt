@@ -6,11 +6,14 @@ import com.example.mova.data.model.response.CharacterCollectResponse
 import com.example.mova.data.model.response.PointSumResponse
 import com.example.mova.data.model.response.ProfileResponse
 import com.example.mova.data.source.remote.repository.MyPageRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MyPageViewModel(private val repository: MyPageRepository): ViewModel() {
+@HiltViewModel
+class MyPageViewModel @Inject constructor(private val repository: MyPageRepository): ViewModel() {
     private val _profileResponse = MutableStateFlow<Result<ProfileResponse>?>(null)
     val profileResponse = _profileResponse.asStateFlow()
 

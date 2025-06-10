@@ -10,20 +10,18 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.MyPageRepository
 import com.example.mova.databinding.DialogNicknameBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class NickNameDialogFragment: DialogFragment() {
 
     private var _binding: DialogNicknameBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MyPageViewModel by activityViewModels {
-        MyPageViewModelFactory(MyPageRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: MyPageViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

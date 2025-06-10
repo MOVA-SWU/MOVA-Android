@@ -10,7 +10,9 @@ import androidx.navigation.fragment.navArgs
 import com.example.mova.R
 import com.example.mova.databinding.FragmentAiBinding
 import com.example.mova.ui.extensions.load
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class AiFragment : Fragment() {
     private var _binding : FragmentAiBinding? = null
     private val binding get() = _binding!!
