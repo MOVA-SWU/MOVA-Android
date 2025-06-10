@@ -8,10 +8,12 @@ import com.example.mova.data.model.request.RefreshTokenRequest
 import com.example.mova.data.model.request.SignUpRequest
 import com.example.mova.data.model.response.EmailCheckResponse
 import com.example.mova.data.model.response.LogInResponse
+import com.example.mova.data.model.response.MissionListResponse
 import com.example.mova.data.model.response.MissionDetailResponse
 import com.example.mova.data.model.response.MovieDetailResponse
 import com.example.mova.data.model.response.MovieListResponse
 import com.example.mova.data.model.response.MovieWriteResponse
+import com.example.mova.data.model.response.PointSumResponse
 import com.example.mova.data.model.response.ProfileResponse
 import com.example.mova.data.model.response.RefreshTokenResponse
 import com.example.mova.data.model.response.SignUpResponse
@@ -21,6 +23,7 @@ import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface RetrofitService {
     @POST("/users/signup")
@@ -73,6 +76,19 @@ interface RetrofitService {
         @Path("missionId") missionId: Int,
         @Body complete: MissionCompleteRequest
     ): Response<Unit>
+
+    @GET("/myMissions")
+    suspend fun getMissionAvailable(
+        @Query("status") status: String
+    ): List<MissionListResponse>
+
+    @GET("/myMissions")
+    suspend fun getMissionComplete(
+        @Query("status") status: String
+    ): List<MissionListResponse>
+
+    @GET("/pointSum")
+    suspend fun getPointSum(): PointSumResponse
 
     @GET("/myPage")
     suspend fun getProfile(): ProfileResponse

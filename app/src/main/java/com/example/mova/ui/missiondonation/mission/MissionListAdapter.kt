@@ -1,33 +1,65 @@
 package com.example.mova.ui.missiondonation.mission
 
+import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mova.data.model.Mission
+import com.example.mova.data.model.response.MissionListResponse
 import com.example.mova.databinding.ItemMissionListBinding
-import com.example.mova.ui.home.MovieClickListener
 
-class MissionListAdapter(private val clickListener: MovieClickListener) : ListAdapter<Mission, MissionListAdapter.MissionListViewHolder> (
+private const val VIEW_TYPE_AVAILABLE = 0
+private const val VIEW_TYPE_COMPLETED = 1
+
+class MissionListAdapter(private val clickListener: MissionClickListener) : ListAdapter<MissionListResponse, RecyclerView.ViewHolder> (
     MissionListDiffCallback()
 ){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MissionListViewHolder {
-        return MissionListViewHolder.from(parent)
+    var isAvailableMode: Boolean = true
+        set(value) {
+            if (field != value) {
+                field = value
+                val currentListCopy = currentList.toList()
+                submitList(null) {
+                    submitList(currentListCopy)
+                }
+            }
+        }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (isAvailableMode) VIEW_TYPE_AVAILABLE else VIEW_TYPE_COMPLETED
     }
 
-    override fun onBindViewHolder(holder: MissionListViewHolder, position: Int) {
-        holder.bind(getItem(position), clickListener)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when(viewType) {
+            VIEW_TYPE_AVAILABLE -> {
+                MissionListViewHolder.from(parent)
+            }
+            VIEW_TYPE_COMPLETED -> {
+                MissionCompleteViewHolder.from(parent)
+            }
+            else -> throw IllegalArgumentException("Invalid viewType $viewType")
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val mission = getItem(position)
+        when (holder) {
+            is MissionListViewHolder -> holder.bind(mission, clickListener)
+            is MissionCompleteViewHolder -> holder.bind(mission, clickListener)
+        }
     }
 
     class MissionListViewHolder private constructor(private val binding: ItemMissionListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(mission: Mission, clickListener: MovieClickListener) {
-                binding.tvMissionListTitle.text = mission.missionTitle
-                binding.tvMissionListPoint.text = "${mission.point}포인트 받기"
+            fun bind(mission: MissionListResponse, clickListener: MissionClickListener) {
+                binding.tvMissionListTitle.text = mission.mission
+                binding.tvMissionListPoint.text = "${mission.cost}포인트 받기"
                 itemView.setOnClickListener {
-                    // clickListener.onMovieClick(mission.id.toString())
+                    clickListener.onMissionClick(mission)
                 }
             }
 
@@ -45,12 +77,47 @@ class MissionListAdapter(private val clickListener: MovieClickListener) : ListAd
         }
 }
 
-class MissionListDiffCallback: DiffUtil.ItemCallback<Mission>() {
-    override fun areItemsTheSame(oldItem: Mission, newItem: Mission): Boolean {
-        return oldItem.id == newItem.id
+class MissionCompleteViewHolder private constructor(private val binding: ItemMissionListBinding) :
+    RecyclerView.ViewHolder(binding.root) {
+
+    fun bind(mission: MissionListResponse, clickListener: MissionClickListener) {
+        binding.tvMissionListTitle.text = mission.mission
+        binding.tvMissionListPoint.visibility = View.GONE
+        val layoutParams = binding.tvMissionListTitle.layoutParams as ViewGroup.MarginLayoutParams
+        val marginInPx = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            30f,
+            binding.tvMissionListTitle.context.resources.displayMetrics
+        ).toInt()
+
+        layoutParams.topMargin = marginInPx
+        layoutParams.bottomMargin = marginInPx
+        binding.tvMissionListTitle.layoutParams = layoutParams
+
+        itemView.setOnClickListener {
+            clickListener.onMissionClick(mission)
+        }
     }
 
-    override fun areContentsTheSame(oldItem: Mission, newItem: Mission): Boolean {
+    companion object {
+        fun from(parent: ViewGroup): MissionCompleteViewHolder {
+            return MissionCompleteViewHolder(
+                ItemMissionListBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+            )
+        }
+    }
+}
+
+class MissionListDiffCallback: DiffUtil.ItemCallback<MissionListResponse>() {
+    override fun areItemsTheSame(oldItem: MissionListResponse, newItem: MissionListResponse): Boolean {
+        return oldItem.myMissionId == newItem.myMissionId
+    }
+
+    override fun areContentsTheSame(oldItem: MissionListResponse, newItem: MissionListResponse): Boolean {
         return oldItem == newItem
     }
 }
