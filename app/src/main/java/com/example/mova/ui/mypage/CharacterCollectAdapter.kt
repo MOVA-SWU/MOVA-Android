@@ -12,8 +12,6 @@ import com.example.mova.ui.extensions.load
 class CharacterCollectAdapter : ListAdapter<String, CharacterCollectAdapter.CharacterCollectViewHolder>(
     CharacterCollectDiffCallback()
 ) {
-    // private var actualItem: List<String> = emptyList()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharacterCollectViewHolder {
         return CharacterCollectViewHolder.from(parent)
     }
@@ -23,10 +21,6 @@ class CharacterCollectAdapter : ListAdapter<String, CharacterCollectAdapter.Char
         val isPlaceholder = item == null
         holder.bind(item, isPlaceholder)
     }
-
-//    override fun getItemCount(): Int {
-//        return 9
-//    }
 
     fun submitWithPlaceholders(item: List<String>) {
         val fixedList = MutableList<String?>(9) { null }

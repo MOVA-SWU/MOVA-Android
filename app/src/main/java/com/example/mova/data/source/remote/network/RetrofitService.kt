@@ -76,10 +76,10 @@ interface RetrofitService {
         @Path("movieRecordId") movieId: Int
     ): MissionDetailResponse
 
-    @PATCH("/movie-records/{movieRecordId}/missions/{missionId}/complete")
+    @PATCH("/movie-records/{movieRecordId}/missions/{myMissionId}/complete")
     suspend fun patchMissionComplete(
         @Path("movieRecordId") movieId: Int,
-        @Path("missionId") missionId: Int,
+        @Path("myMissionId") missionId: Int,
         @Body complete: MissionCompleteRequest
     ): Response<Unit>
 

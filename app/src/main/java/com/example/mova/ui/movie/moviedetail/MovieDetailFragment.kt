@@ -50,6 +50,9 @@ class MovieDetailFragment: Fragment() {
     private fun setLayout() {
         setViewModel()
         binding.btnMovieDetailBack.setOnClickListener {
+            findNavController().previousBackStackEntry
+                ?.savedStateHandle
+                ?.set("mission_completed", true)
             findNavController().navigateUp()
         }
         binding.btnMovieDetailPoint.setOnClickListener {
@@ -93,7 +96,7 @@ class MovieDetailFragment: Fragment() {
                                     tvMovieDetailAiMissionField.text = response?.mission
                                     btnMovieDetailPoint.text = "${response?.cost} P"
                                     ivMovieDetailCharacter.load(response?.characterImage)
-                                    missionId = response?.missionId
+                                    missionId = response?.myMissionId
                                     if (response?.missionStatus == "COMPLETED") {
                                         with(binding.btnMovieDetailPoint) {
                                             isEnabled = false

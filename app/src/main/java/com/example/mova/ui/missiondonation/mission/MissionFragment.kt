@@ -49,7 +49,30 @@ class MissionFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        savedStateHandle()
         setLayout()
+    }
+
+    private fun savedStateHandle() {
+        val navController = (requireActivity() as AppCompatActivity)
+            .findNavController(R.id.container_home)
+
+        navController.currentBackStackEntry
+            ?.savedStateHandle
+            ?.getLiveData<Boolean>("mission_completed")
+            ?.observe(viewLifecycleOwner) { completed ->
+                if (completed == true) {
+                    if (binding.btnRadioPossible.isChecked) {
+                        viewModel.loadMissionAvailableList()
+                    } else {
+                        viewModel.loadMissionCompleteList()
+                    }
+                    viewModel.loadPointSum()
+                    navController.currentBackStackEntry
+                        ?.savedStateHandle
+                        ?.remove<Boolean>("mission_completed")
+                }
+            }
     }
 
     private fun setLayout() {
@@ -121,6 +144,16 @@ class MissionFragment : Fragment() {
                 }
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (binding.btnRadioPossible.isChecked) {
+            viewModel.loadMissionAvailableList()
+        } else {
+            viewModel.loadMissionCompleteList()
+        }
+        viewModel.loadPointSum()
     }
 
     override fun onDestroyView() {

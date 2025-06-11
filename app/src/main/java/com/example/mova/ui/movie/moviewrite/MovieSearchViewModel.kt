@@ -18,9 +18,9 @@ class MovieSearchViewModel @Inject constructor(private val repository : MovieSea
 
     fun searchMovies(query: String) {
         viewModelScope.launch {
-            repository.searchMovies(query).let {
-                _movieList.value = it
-            }
+            _movieList.emit(emptyList())
+            val result = repository.searchMovies(query)
+            _movieList.emit(result)
         }
     }
 }

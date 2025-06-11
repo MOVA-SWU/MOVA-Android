@@ -101,7 +101,11 @@ class MyPageFragment : Fragment() {
                     viewModel.profileResponse.collectLatest { result ->
                         result?.let {
                             if (it.isSuccess) {
-                                binding.ivMypageProfile.load(it.getOrNull()?.profileImage)
+                                if (it.getOrNull()?.profileImage == null) {
+                                    binding.ivMypageProfile.setImageResource(R.drawable.ic_profile)
+                                } else {
+                                    binding.ivMypageProfile.load(it.getOrNull()?.profileImage)
+                                }
                                 binding.tvMypageNickname.text = it.getOrNull()?.nickname
                             } else {
                                 Toast.makeText(context, "회원정보 불러오기 실패", Toast.LENGTH_SHORT).show()
