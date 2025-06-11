@@ -13,14 +13,14 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.example.mova.R
 import com.example.mova.data.model.response.MovieListResponse
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.HomeRepository
 import com.example.mova.databinding.FragmentHomeBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -40,9 +40,7 @@ class HomeFragment : Fragment() {
         }
     })
 
-    private val viewModel: HomeViewModel by viewModels {
-        HomeViewModelFactory(HomeRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

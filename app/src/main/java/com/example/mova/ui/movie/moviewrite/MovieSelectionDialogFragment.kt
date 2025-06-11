@@ -12,8 +12,10 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import com.example.mova.data.model.response.MovieInfo
 import com.example.mova.databinding.DialogMovieSelectionBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieSelectionDialogFragment: DialogFragment() {
 
     private var _binding: DialogMovieSelectionBinding? = null
@@ -54,9 +56,6 @@ class MovieSelectionDialogFragment: DialogFragment() {
     private fun setAdapter() {
         binding.rvMovieSelection.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
-//            viewModel.movieInfo.collectLatest { movieList ->
-//                adapter.submitList(movieList)
-//            }
             viewModel.movieInfo
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
                 .collect { movieList ->

@@ -5,11 +5,14 @@ import androidx.lifecycle.viewModelScope
 import com.example.mova.data.model.response.MissionListResponse
 import com.example.mova.data.model.response.PointSumResponse
 import com.example.mova.data.source.remote.repository.MissionRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class MissionViewModel(private val repository: MissionRepository): ViewModel() {
+@HiltViewModel
+class MissionViewModel @Inject constructor(private val repository: MissionRepository): ViewModel() {
     private val _missionListResponse = MutableStateFlow(Result.success(emptyList<MissionListResponse>()))
     val missionListResponse = _missionListResponse.asStateFlow()
 

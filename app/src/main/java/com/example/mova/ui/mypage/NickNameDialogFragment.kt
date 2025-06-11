@@ -1,4 +1,4 @@
-package com.example.mova.ui.movie.moviewrite
+package com.example.mova.ui.mypage
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,24 +10,25 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
-import com.example.mova.databinding.DialogMovieNameBinding
+import com.example.mova.databinding.DialogNicknameBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MovieNameDialogFragment: DialogFragment() {
+class NickNameDialogFragment: DialogFragment() {
 
-    private var _binding: DialogMovieNameBinding? = null
+    private var _binding: DialogNicknameBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MovieSearchViewModel by activityViewModels()
+    private val viewModel: MyPageViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = DialogMovieNameBinding.inflate(inflater, container, false)
+        _binding = DialogNicknameBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -41,12 +42,12 @@ class MovieNameDialogFragment: DialogFragment() {
 
     private fun setLayout() {
         binding.btnDialogConfirm.setOnClickListener {
-            val movieName = binding.etDialogMovieName.text.toString().trim()
-            if (movieName.isNotEmpty()) {
-                viewModel.searchMovies(movieName)
-                observeMovieList()
+            val nickname = binding.etDialogNickname.text.toString().trim()
+            if (nickname.isNotEmpty()) {
+                viewModel.changeNickname(nickname)
+                observeNicknameChange()
             } else {
-                binding.etDialogMovieName.error = "영화 제목을 입력하세요."
+                binding.etDialogNickname.error = "변경할 닉네임을 입력하세요."
             }
         }
 
@@ -55,14 +56,18 @@ class MovieNameDialogFragment: DialogFragment() {
         }
     }
 
-    private fun observeMovieList() {
+    private fun observeNicknameChange() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.movieInfo
+            viewModel.nicknameResponse
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
-                .collect { movieList ->
-                    if (movieList.isNotEmpty()) {
-                        MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
-                        dismiss()
+                .collectLatest { result ->
+                    result?.let {
+                        if (it.isSuccess) {
+                            dismiss()
+                            Toast.makeText(context, "닉네임이 변경 되었습니다", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(context, "닉네임 변경 실패", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
         }

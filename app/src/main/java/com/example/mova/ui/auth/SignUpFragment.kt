@@ -15,19 +15,17 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mova.R
 import com.example.mova.data.model.request.EmailCheckRequest
 import com.example.mova.data.model.request.SignUpRequest
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.AuthRepository
 import com.example.mova.databinding.FragmentSignUpBinding
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: AuthViewModel by viewModels {
-        AuthViewModelFactory(AuthRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: AuthViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

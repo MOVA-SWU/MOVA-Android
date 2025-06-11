@@ -1,7 +1,6 @@
 package com.example.mova.ui.movie.moviedetail
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,22 +14,20 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mova.R
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.MovieDetailRepository
 import com.example.mova.databinding.FragmentMovieDetailBinding
 import com.example.mova.ui.extensions.load
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MovieDetailFragment: Fragment() {
     private var _binding: FragmentMovieDetailBinding? = null
     private val binding get() = _binding!!
 
     private val args: MovieDetailFragmentArgs by navArgs()
 
-    private val viewModel: MovieDetailViewModel by viewModels {
-        MovieDetailViewModelFactory(MovieDetailRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: MovieDetailViewModel by viewModels()
 
     private var missionId: Int? = null
     private var movieId: Int? = null
@@ -53,6 +50,9 @@ class MovieDetailFragment: Fragment() {
     private fun setLayout() {
         setViewModel()
         binding.btnMovieDetailBack.setOnClickListener {
+            findNavController().previousBackStackEntry
+                ?.savedStateHandle
+                ?.set("mission_completed", true)
             findNavController().navigateUp()
         }
         binding.btnMovieDetailPoint.setOnClickListener {
@@ -96,7 +96,7 @@ class MovieDetailFragment: Fragment() {
                                     tvMovieDetailAiMissionField.text = response?.mission
                                     btnMovieDetailPoint.text = "${response?.cost} P"
                                     ivMovieDetailCharacter.load(response?.characterImage)
-                                    missionId = response?.missionId
+                                    missionId = response?.myMissionId
                                     if (response?.missionStatus == "COMPLETED") {
                                         with(binding.btnMovieDetailPoint) {
                                             isEnabled = false

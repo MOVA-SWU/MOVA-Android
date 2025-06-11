@@ -13,14 +13,13 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mova.R
-import com.example.mova.data.source.remote.network.RetrofitClient
-import com.example.mova.data.source.remote.repository.MovieWriteRepository
 import com.example.mova.databinding.FragmentLoadingBinding
 import com.example.mova.ui.movie.moviewrite.MovieWriteViewModel
-import com.example.mova.ui.movie.moviewrite.MovieWriteViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class LoadingFragment : Fragment() {
 
     private var _binding : FragmentLoadingBinding? = null
@@ -28,9 +27,7 @@ class LoadingFragment : Fragment() {
 
     private val args: LoadingFragmentArgs by navArgs()
 
-    private val viewModel: MovieWriteViewModel by viewModels {
-        MovieWriteViewModelFactory(MovieWriteRepository(RetrofitClient.retrofitService))
-    }
+    private val viewModel: MovieWriteViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,

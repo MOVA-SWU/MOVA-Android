@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mova.data.model.Company
+import com.example.mova.data.model.response.CompanyListResponse
 import com.example.mova.databinding.ItemDonationListBinding
 
-class CompanyListAdapter(private val clickListener: CompanyClickListener) : ListAdapter<Company, CompanyListAdapter.CompanyListViewHolder> (
+class CompanyListAdapter(private val clickListener: CompanyClickListener) : ListAdapter<CompanyListResponse, CompanyListAdapter.CompanyListViewHolder> (
     CompanyListDiffCallback()
 ){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyListViewHolder {
@@ -22,10 +22,10 @@ class CompanyListAdapter(private val clickListener: CompanyClickListener) : List
     class CompanyListViewHolder private constructor(private val binding: ItemDonationListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-            fun bind(company: Company, clickListener: CompanyClickListener) {
-                binding.tvDonationCompanyName.text = company.companyName
+            fun bind(company: CompanyListResponse, clickListener: CompanyClickListener) {
+                binding.tvDonationCompanyName.text = company.name
                 itemView.setOnClickListener {
-                    clickListener.onCompanyClick(company.id.toString())
+                    clickListener.onCompanyClick(company)
                 }
             }
 
@@ -43,12 +43,12 @@ class CompanyListAdapter(private val clickListener: CompanyClickListener) : List
         }
 }
 
-class CompanyListDiffCallback: DiffUtil.ItemCallback<Company>() {
-    override fun areItemsTheSame(oldItem: Company, newItem: Company): Boolean {
-        return oldItem.id == newItem.id
+class CompanyListDiffCallback: DiffUtil.ItemCallback<CompanyListResponse>() {
+    override fun areItemsTheSame(oldItem: CompanyListResponse, newItem: CompanyListResponse): Boolean {
+        return oldItem.companyId == newItem.companyId
     }
 
-    override fun areContentsTheSame(oldItem: Company, newItem: Company): Boolean {
+    override fun areContentsTheSame(oldItem: CompanyListResponse, newItem: CompanyListResponse): Boolean {
         return oldItem == newItem
     }
 }

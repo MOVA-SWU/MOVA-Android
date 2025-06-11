@@ -4,8 +4,9 @@ import com.example.mova.data.model.request.MissionCompleteRequest
 import com.example.mova.data.model.response.MissionDetailResponse
 import com.example.mova.data.model.response.MovieDetailResponse
 import com.example.mova.data.source.remote.network.RetrofitService
+import javax.inject.Inject
 
-class MovieDetailRepository(private val retrofitService: RetrofitService) {
+class MovieDetailRepository @Inject constructor(private val retrofitService: RetrofitService) {
     suspend fun getMovieDetail(movieId: Int): Result<MovieDetailResponse> {
         return try {
             val response = retrofitService.getMovieDetail(movieId)

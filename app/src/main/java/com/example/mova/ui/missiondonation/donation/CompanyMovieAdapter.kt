@@ -5,11 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mova.R
-import com.example.mova.data.model.Movie
 import com.example.mova.databinding.ItemCompanyMovieListBinding
+import com.example.mova.ui.extensions.load
 
-class CompanyMovieAdapter : ListAdapter<Movie, CompanyMovieAdapter.CompanyMovieViewHolder>(
+class CompanyMovieAdapter : ListAdapter<String, CompanyMovieAdapter.CompanyMovieViewHolder>(
     CompanyMovieDiffCallback()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CompanyMovieViewHolder {
@@ -23,8 +22,8 @@ class CompanyMovieAdapter : ListAdapter<Movie, CompanyMovieAdapter.CompanyMovieV
     class CompanyMovieViewHolder private constructor(private val binding: ItemCompanyMovieListBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(movie: Movie) {
-            binding.ivCompanyDetailMovie.setBackgroundResource(R.color.gray_55)
+        fun bind(imageUrl: String) {
+            binding.ivCompanyDetailMovie.load(imageUrl)
         }
 
         companion object {
@@ -41,13 +40,12 @@ class CompanyMovieAdapter : ListAdapter<Movie, CompanyMovieAdapter.CompanyMovieV
     }
 }
 
-class CompanyMovieDiffCallback : DiffUtil.ItemCallback<Movie>() {
-    override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+class CompanyMovieDiffCallback : DiffUtil.ItemCallback<String>() {
+    override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
         return oldItem == newItem
     }
 
+    override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+        return oldItem == newItem
+    }
 }

@@ -2,8 +2,9 @@ package com.example.mova.data.source.remote.repository
 
 import com.example.mova.data.model.response.MovieListResponse
 import com.example.mova.data.source.remote.network.RetrofitService
+import javax.inject.Inject
 
-class HomeRepository(private val retrofitService: RetrofitService) {
+class HomeRepository @Inject constructor(private val retrofitService: RetrofitService) {
     suspend fun getMovieList(): Result<List<MovieListResponse>> {
         return try {
             val response = retrofitService.getMovieList()
