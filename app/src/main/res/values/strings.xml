@@ -78,5 +78,7 @@
     <string name="description_mypage_point">포인트 받기 이미지</string>
     <string name="description_character_collect">캐릭터 수집 현황 버튼</string>
     <string name="description_character_lock">캐릭터 잠금</string>
+    <string name="description_btn_analysis_back">분석 로딩 페이지 뒤로가기 버튼</string>
+    <string name="label_analysis">콘이가 사진을 분석하는 중이에요\n. . .</string>
 
 </resources>
