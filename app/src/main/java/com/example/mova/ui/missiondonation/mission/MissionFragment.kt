@@ -53,6 +53,16 @@ class MissionFragment : Fragment() {
         setLayout()
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (binding.btnRadioPossible.isChecked) {
+            viewModel.loadMissionAvailableList()
+        } else {
+            viewModel.loadMissionCompleteList()
+        }
+        viewModel.loadPointSum()
+    }
+
     private fun savedStateHandle() {
         val navController = (requireActivity() as AppCompatActivity)
             .findNavController(R.id.container_home)
@@ -144,16 +154,6 @@ class MissionFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        if (binding.btnRadioPossible.isChecked) {
-            viewModel.loadMissionAvailableList()
-        } else {
-            viewModel.loadMissionCompleteList()
-        }
-        viewModel.loadPointSum()
     }
 
     override fun onDestroyView() {

@@ -5,5 +5,6 @@ data class MissionDetailResponse(
     val mission: String,
     val cost: Int,
     val characterImage: String,
+    val checkedUrl: String?,
     val missionStatus: String
 )
