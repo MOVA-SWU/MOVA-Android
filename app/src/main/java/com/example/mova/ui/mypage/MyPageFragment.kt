@@ -61,6 +61,7 @@ class MyPageFragment : Fragment() {
         binding.tvMypageLogout.setOnClickListener {
             viewModel.logout()
             logout()
+            // forceLocalLogout()
         }
     }
 
@@ -68,6 +69,20 @@ class MyPageFragment : Fragment() {
         val dialogFragment = NickNameDialogFragment()
         dialogFragment.show(parentFragmentManager, "NicknameDialog")
     }
+
+//    private fun forceLocalLogout() {
+//        viewLifecycleOwner.lifecycleScope.launch {
+//            val dataStoreManager = DataStoreManager(requireContext())
+//            dataStoreManager.clearTokens()
+//
+//            Toast.makeText(context, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+//
+//            val intent = Intent(requireContext(), LoginActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+//            startActivity(intent)
+//            requireActivity().finish()
+//        }
+//    }
 
     private fun logout() {
         viewLifecycleOwner.lifecycleScope.launch {
