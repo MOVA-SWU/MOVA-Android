@@ -56,10 +56,13 @@ class MovieSelectionDialogFragment: DialogFragment() {
     private fun setAdapter() {
         binding.rvMovieSelection.adapter = adapter
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.movieInfo
+            viewModel.state
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
-                .collect { movieList ->
-                    adapter.submitList(movieList)
+                .collect { state ->
+                    if (state is MovieSearchState.Success) {
+                        adapter.submitList(state.movieList)
+                        viewModel.resetState()
+                    }
                 }
         }
     }

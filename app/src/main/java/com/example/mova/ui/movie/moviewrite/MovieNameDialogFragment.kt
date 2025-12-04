@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -36,6 +37,7 @@ class MovieNameDialogFragment: DialogFragment() {
         dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         setLayout()
+        observeMovieState()
     }
 
     private fun setLayout() {
@@ -43,7 +45,6 @@ class MovieNameDialogFragment: DialogFragment() {
             val movieName = binding.etDialogMovieName.text.toString().trim()
             if (movieName.isNotEmpty()) {
                 viewModel.searchMovies(movieName)
-                observeMovieList()
             } else {
                 binding.etDialogMovieName.error = "영화 제목을 입력하세요."
             }
@@ -54,14 +55,29 @@ class MovieNameDialogFragment: DialogFragment() {
         }
     }
 
-    private fun observeMovieList() {
+    private fun observeMovieState() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.movieInfo
+            viewModel.state
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
-                .collect { movieList ->
-                    if (movieList.isNotEmpty()) {
-                        MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
-                        dismiss()
+                .collect { state ->
+                    when (state) {
+                        MovieSearchState.Loading -> { }
+                        is MovieSearchState.Success -> {
+                            MovieSelectionDialogFragment().show(parentFragmentManager, "MovieSelectionDialog")
+                            dismiss()
+                        }
+                        MovieSearchState.EmptyResult -> {
+                            Toast.makeText(context, "검색 결과가 없습니다.", Toast.LENGTH_SHORT).show()
+                            dismiss()
+                            viewModel.resetState()
+                        }
+                        is MovieSearchState.Error -> {
+                            Toast.makeText(context, state.message, Toast.LENGTH_SHORT).show()
+                            binding.btnDialogConfirm.isEnabled = true
+                        }
+                        MovieSearchState.Initial -> {
+                            binding.btnDialogConfirm.isEnabled = true
+                        }
                     }
                 }
         }
