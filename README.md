@@ -1,18 +1,20 @@
 # 🎬 About MOVA
 
-<img width="1920" height="1080" alt="1" src="https://github.com/user-attachments/assets/864113bd-9544-4e4a-a2f9-480114011147" />
-<img width="1920" height="1080" alt="2" src="https://github.com/user-attachments/assets/6a516268-b8e0-472b-afbd-b000f72c21f0" />
-<img width="1920" height="1080" alt="3" src="https://github.com/user-attachments/assets/02ba9472-3ff9-4629-9196-63ec2d0b6cb6" />
-<img width="1920" height="1080" alt="4" src="https://github.com/user-attachments/assets/51a5208d-a615-48f7-938b-b586460a077f" />
-<img width="1920" height="1080" alt="5" src="https://github.com/user-attachments/assets/61fc4ba6-90d1-4843-acc7-ec514543385c" />
-<img width="1920" height="1080" alt="6" src="https://github.com/user-attachments/assets/598fdbc8-0c12-4d75-a657-10d115b10837" />
-<img width="1920" height="1080" alt="7" src="https://github.com/user-attachments/assets/35d7023a-09ab-4edb-b02d-c044364efb01" />
-<img width="1920" height="1080" alt="8" src="https://github.com/user-attachments/assets/23ccd175-851c-49aa-b8c4-fbff87353b46" />
-<img width="1920" height="1080" alt="9" src="https://github.com/user-attachments/assets/8d463df7-75af-4ac1-9e18-568f0acaa865" />
-<img width="1920" height="1080" alt="10" src="https://github.com/user-attachments/assets/0d51c541-4f25-46c6-96a3-324f3a035719" />
-<img width="1920" height="1080" alt="11" src="https://github.com/user-attachments/assets/f44cbfe6-ecd6-4e03-b091-b7cfc59dd7bb" />
-<img width="1920" height="1080" alt="12" src="https://github.com/user-attachments/assets/7ab992e4-fd1e-4e9f-959a-030eee7a39c1" />
-<img width="1920" height="1080" alt="13" src="https://github.com/user-attachments/assets/65a68d84-cad3-4653-b84a-0ac08d7c2b36" />
-<img width="1920" height="1080" alt="14" src="https://github.com/user-attachments/assets/88c22c77-d96d-4039-b8e4-b8ea636e5a1f" />
-<img width="1920" height="1080" alt="15" src="https://github.com/user-attachments/assets/9bdb1a8e-72e2-4a11-b2af-0586b7e4aec4" />
-<img width="1920" height="1080" alt="16" src="https://github.com/user-attachments/assets/aff358ca-f4d7-4585-a18e-cef504b977ae" />
+
+![1](https://github.com/user-attachments/assets/3b582847-6f1c-4e02-8475-d49894e6ab22)
+![2](https://github.com/user-attachments/assets/b097db8e-6cda-4569-b07d-0be17a05957e)
+![3](https://github.com/user-attachments/assets/496d3263-6848-45f1-b5ab-e12c4b1eab88)
+![5](https://github.com/user-attachments/assets/80c84141-9729-4a97-81cd-4cc951616043)
+![6](https://github.com/user-attachments/assets/34d0d946-cacd-47d1-8456-7365245a08e5)
+![7](https://github.com/user-attachments/assets/090aa79b-f99c-41ba-a8ce-1811cb9613ff)
+![8](https://github.com/user-attachments/assets/291a4960-93ff-4fe4-9da2-d52da01a20ec)
+![11](https://github.com/user-attachments/assets/679ff980-0a57-4c01-a451-b73b8229c494)
+![10](https://github.com/user-attachments/assets/57bd7e5e-1d5d-4998-86fa-b537fef95dfc)
+![12](https://github.com/user-attachments/assets/81676157-d51e-45b4-974c-95c3f8052aee)
+![13](https://github.com/user-attachments/assets/b7dc6fbc-ea7a-459f-90f3-5ada31d45628)
+![14](https://github.com/user-attachments/assets/8c2ec4de-c0b6-4c9b-8908-f2b18716fd92)
+![15](https://github.com/user-attachments/assets/d2aa3886-f75c-4ddc-89d1-bbcf374f7836)
+![16](https://github.com/user-attachments/assets/d624e81b-8d04-4607-b4a3-bcc58059f40c)
+![17](https://github.com/user-attachments/assets/db7845b7-cd78-44a7-8640-dae9bf693691)
+![18](https://github.com/user-attachments/assets/7309fd0b-ec74-4e37-a3f8-5ff30461cfa9)
+![25](https://github.com/user-attachments/assets/cb1ab1e7-94d8-476f-8855-39c23844195e)
